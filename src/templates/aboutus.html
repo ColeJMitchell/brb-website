@@ -115,9 +115,12 @@
                 </form>
             </div> 
 
-            <div class="col d-flex justify-content-center align-items-center position-relative" style="background-color: green;">
-                <btn class="custom-button">Healthcare</h1>
-                </div> 
+            <div class="col d-flex justify-content-center align-items-center position-relative">
+                <form method="post" action="{% url 'healthcare' %}">
+                    {% csrf_token %}
+                <button class = "btn custom-button" type = "submit">Healthcare</btn>
+                </form>
+            </div>
 
                 <div class="col d-flex justify-content-center align-items-center position-relative">
                     <form method="post" action="{% url 'food' %}">
@@ -140,12 +143,9 @@
                 </form>
             </div> 
 
-            <div class="col d-flex justify-content-center align-items-center position-relative">
-                <form method="post" action="{% url 'aboutus' %}">
-                    {% csrf_token %}
-                <button class = "btn custom-button" type = "submit">About Us</btn>
-                </form>
-            </div>
+            <div class="col d-flex justify-content-center align-items-center position-relative" style="background-color: green;">
+                <btn class="custom-button">About Us</h1>
+                </div> 
 
         </div>
        

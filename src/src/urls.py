@@ -17,8 +17,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from pages.views import home
+from pages.views import communities
+from pages.views import aboutus
+from pages.views import food
+from pages.views import healthcare
+from pages.views import schools
+from pages.views import events
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('communities/', communities, name='communities'),
+    path('aboutus/', aboutus, name='aboutus'),
+    path('food/', food, name='food'),
+    path('healthcare/', healthcare, name='healthcare'),
+    path('schools/', schools, name='schools'),
+    path('events/', events, name='events'),
     path('', home, name='home'),
 ]

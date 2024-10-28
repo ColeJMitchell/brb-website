@@ -60,6 +60,22 @@
             padding: 0;
         }
 
+        .custom-button {
+            color: yellow;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.2vw;
+            outline: none;
+            border: none;
+        }
+
+        .custom-button:hover,
+        .custom-button:focus,
+        .custom-button:active {
+            color: yellow !important;
+            background-color: transparent; 
+            border-color: transparent; 
+            box-shadow: none; 
+        }
 
         @media (max-width: 768px) {
             .overlay-head {
@@ -78,29 +94,59 @@
                 font-size: 6vw;
             }
         }
+
     </style>
 </head>
 <body>
     <div class="container-fluid">
         <div class="row d-flex justify-content-around" style="background-color: black; height: 10vh;">
+
             <div class="col d-flex justify-content-center align-items-center position-relative" style="background-color: green;">
-            <btn style="color: yellow; font-family: 'Bebas Neue', sans-serif; font-size: 40px;">Home</h1>
+            <btn class="custom-button">Home</h1>
             </div> 
+
             <div class="col d-flex justify-content-center align-items-center position-relative">
-                <btn style="color: yellow; font-family: 'Bebas Neue', sans-serif; font-size: 40px;">Schools</h1>
+                <form method="post" action="{% url 'schools' %}">
+                    {% csrf_token %}
+                <button class = "btn custom-button " type = "submit">Schools</btn>
+                </form>
             </div> 
+
             <div class="col d-flex justify-content-center align-items-center position-relative">
-                <btn style="color: yellow; font-family: 'Bebas Neue', sans-serif; font-size: 40px;">Health Care</h1>
-            </div> 
+                <form method="post" action="{% url 'healthcare' %}">
+                    {% csrf_token %}
+                <button class = "btn custom-button" type = "submit">Healthcare</btn>
+                </form>
+            </div>  
+
             <div class="col d-flex justify-content-center align-items-center position-relative">
-                <btn style="color: yellow; font-family: 'Bebas Neue', sans-serif; font-size: 40px;">Food</h1>
+                <form method="post" action="{% url 'food' %}">
+                    {% csrf_token %}
+                <button class = "btn custom-button" type = "submit">Food</btn>
+                </form>
             </div> 
+
             <div class="col d-flex justify-content-center align-items-center position-relative">
-                <btn style="color: yellow; font-family: 'Bebas Neue', sans-serif; font-size: 40px;">Communities</h1>
+                <form method="post" action="{% url 'communities' %}">
+                    {% csrf_token %}
+                <button class = "btn custom-button" type = "submit">Communities</btn>
+                </form>
             </div> 
+
             <div class="col d-flex justify-content-center align-items-center position-relative">
-                <btn style="color: yellow; font-family: 'Bebas Neue', sans-serif; font-size: 40px;">Events</h1>
-            </div> 
+                <form method="post" action="{% url 'events' %}">
+                    {% csrf_token %}
+                <button class = "btn custom-button" type = "submit" >Events</btn>
+                </form>
+            </div>
+
+            <div class="col d-flex justify-content-center align-items-center position-relative">
+                <form method="post" action="{% url 'aboutus' %}">
+                    {% csrf_token %}
+                <button class = "btn custom-button" type = "submit">About Us</btn>
+                </form>
+            </div>
+
         </div>
        
         <div class="row d-flex justify-content-around" style="background-color: yellow; height: 5vh;">
