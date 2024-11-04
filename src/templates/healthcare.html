@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BeeReadyHealthcare</title>
     <style>
         body {
             margin: 0;
@@ -94,7 +94,44 @@
                 font-size: 6vw;
             }
         }
+        /* Additional styling for content layout */
+        .content-container {
+            padding: 20px;
+        }
 
+        .clinics, .map, .insurances {
+            margin-top: 20px;
+        }
+
+        .clinics-header, .insurances-header {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: black;
+        }
+
+        .clinic-card {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .map-container {
+            height: 400px;
+            background-color: #e9ecef;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: #6c757d;
+        }
+
+        .insurance-links, .in-person-help {
+            font-size: 1rem;
+        }
+        
     </style>
 </head>
 <body>
@@ -163,6 +200,49 @@
 
                     <input type="radio" class="btn-check" name="language" id="spanish" autocomplete="off">
                     <label class="btn select-button" for="spanish">Spanish</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Layout -->
+        <div class="container content-container">
+            <div class="row">
+                <!-- Clinics Section -->
+                <div class="col-md-6 clinics">
+                    <div class="clinics-header">Clinics</div>
+                    <div class="clinic-card">
+                        <strong>Name:</strong> Clinic 1<br>
+                        <strong>Contact:</strong> (123) 456-7890<br>
+                        <strong>Insurances Accepted:</strong> Insurance A, Insurance B
+                    </div>
+                    <div class="clinic-card">
+                        <strong>Name:</strong> Clinic 2<br>
+                        <strong>Contact:</strong> (123) 456-7890<br>
+                        <strong>Insurances Accepted:</strong> Insurance C, Insurance D
+                    </div>
+                    <!-- Add more clinic cards as needed -->
+                </div>
+
+                <!-- Map Section -->
+                <div class="col-md-6 map">
+                    <div class="map-container">
+                        Map (Embed or Placeholder)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Insurances Section -->
+            <div class="row insurances">
+                <div class="col-12">
+                    <div class="insurances-header">Insurances</div>
+                    <div class="insurance-links">
+                        <a href="#">www.insuranceA.com</a><br>
+                        <a href="#">www.insuranceB.com</a>
+                    </div>
+                    <div class="in-person-help mt-3">
+                        <strong>Get help in person!</strong><br>
+                        Location: 123 Main St, Easton, PA
+                    </div>
                 </div>
             </div>
         </div>
