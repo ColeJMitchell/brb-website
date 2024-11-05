@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.conf import settings
 
 def home(request):
     if request.method == "POST":
@@ -22,8 +23,11 @@ def healthcare(request):
         return render(request, "healthcare.html")
 
 def schools(request):
+    api_key = settings.MAP_API_KEY
+    print(api_key)
     if request.method == "POST":
-        return render(request, "schools.html")
+        return render(request, "schools.html", {"api_key": api_key})
+
 
 def events(request):
     if request.method == "POST":
