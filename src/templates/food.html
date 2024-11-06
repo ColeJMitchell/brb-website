@@ -6,12 +6,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BeeReady Food Resources</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            overflow: auto;
         }
         .container-fluid {
             padding: 0;
@@ -95,6 +95,38 @@
             }
         }
 
+        .content-container {
+            padding: 20px;
+        }
+
+        .resource-section, .partners, .map {
+            margin-top: 20px;
+        }
+
+        .resource-header, .partners-header {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: black;
+        }
+
+        .resource-card {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .map-container {
+            height: 400px;
+            background-color: #e9ecef;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: #6c757d;
+        }
     </style>
 </head>
 <body>
@@ -163,6 +195,58 @@
 
                     <input type="radio" class="btn-check" name="language" id="spanish" autocomplete="off">
                     <label class="btn select-button" for="spanish">Spanish</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Layout -->
+        <div class="container content-container">
+            <div class="row">
+                <!-- Food Resources Section -->
+                <div class="col-md-6">
+                    <!-- Food Drives -->
+                    <div class="resource-section">
+                        <div class="resource-header">Food Drives</div>
+                        <div class="resource-card">Food Drive 1</div>
+                        <div class="resource-card">Food Drive 2</div>
+                        <!-- Add more food drives as needed -->
+                    </div>
+
+                    <!-- Grocery with WIC -->
+                    <div class="resource-section">
+                        <div class="resource-header">Grocery with WIC</div>
+                        <div class="resource-card">Grocery Store 1</div>
+                        <div class="resource-card">Grocery Store 2</div>
+                        <!-- Add more grocery options as needed -->
+                    </div>
+
+                    <!-- Markets -->
+                    <div class="resource-section">
+                        <div class="resource-header">Markets</div>
+                        <div class="resource-card">Market 1</div>
+                        <div class="resource-card">Market 2</div>
+                        <!-- Add more markets as needed -->
+                    </div>
+                </div>
+
+                <!-- Map Section -->
+                <div class="col-md-6">
+                    <div class="map-container">
+                        Map (Embed or Placeholder)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Partners Section -->
+            <div class="row partners">
+                <div class="col-12">
+                    <div class="partners-header">Our Partners</div>
+                    <ul>
+                        <li>Partner 1</li>
+                        <li>Partner 2</li>
+                        <li>Partner 3</li>
+                        <!-- Add more partners as needed -->
+                    </ul>
                 </div>
             </div>
         </div>
