@@ -4,6 +4,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -95,6 +96,18 @@
             }
         }
 
+        /* Limit the size of card images */
+        .card-img-top {
+          max-height: 200px;
+          object-fit: cover;
+        }
+
+        /* Make the event cards container scrollable */
+        #eventsContainer {
+          height: calc(100vh - 15vh);  /* Subtract the height of the header/navigation (15vh in this case) */
+          overflow-y: auto;
+        }
+
     </style>
 </head>
 <body>
@@ -166,5 +179,242 @@
                 </div>
             </div>
         </div>
+
+        <!-- add the event cards here -->
+        <div>
+          <div class="container my-4">
+            <!-- Flex row with responsive column classes -->
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4" id="eventsContainer">
+              <!-- Event cards will be dynamically inserted here -->
+            </div>
+          </div>
+        </div>
+        
+        <!-- Bootstrap JavaScript (optional, but recommended for full functionality) -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+        
+        <script>
+          // List of events with attributes
+          const events = [
+            {
+              title: 'WIC Enrollment - Women, Infants, Children',
+              location: 'Giant Food Store #6255, 801 S 25th St, Easton, PA 18045',
+              date: 'Today',
+              time: '9 am - 4 pm',
+              price: 'Free',
+              imageUrl: 'https://picsum.photos/300/200?random=1'
+            },
+            {
+              title: 'Project of Easton Food Pantry Distribution',
+              location: '330 Ferry St, Easton, PA 18042',
+              date: 'Today',
+              time: '10 am - 12:15 pm, 1 pm - 3:15 pm',
+              price: 'Free',
+              imageUrl: 'https://picsum.photos/300/200?random=2'
+            },
+            {
+              title: 'Free Health Screening at St. Luke\'s Hospital',
+              location: 'St. Luke\'s Hospital, Easton, PA',
+              date: 'Tomorrow',
+              time: '9 am - 1 pm',
+              price: 'Free',
+              imageUrl: 'https://picsum.photos/300/200?random=3'
+            },
+            {
+              title: 'Kids Art Workshop',
+              location: 'Easton Arts Center, 2001 Washington St, Easton, PA',
+              date: 'November 10',
+              time: '10 am - 12 pm',
+              price: '$5',
+              imageUrl: 'https://picsum.photos/300/200?random=24'
+            },
+            {
+              title: 'Neighborhood Health Centers Dental Services',
+              location: '1101 Northampton St, Easton, PA 18042',
+              date: 'November 12',
+              time: '9 am - 5 pm',
+              price: '$8 (sliding scale)',
+              imageUrl: 'https://picsum.photos/300/200?random=6'
+            },
+            {
+              title: 'Community Movie Night',
+              location: 'Easton Public Library, 515 Church St, Easton, PA 18042',
+              date: 'November 13',
+              time: '6 pm - 8 pm',
+              price: '$3',
+              imageUrl: 'https://picsum.photos/300/200?random=25'
+            },
+            {
+              title: 'WIC Grocery Pickup Assistance',
+              location: 'Redner\'s Market #78, 3745 Nicholas St, Easton, PA 18045',
+              date: 'November 14',
+              time: '10 am - 4 pm',
+              price: 'Free',
+              imageUrl: 'https://picsum.photos/300/200?random=8'
+            },
+            {
+              title: 'Free Children’s Health Clinic: Vaccines & Checkups',
+              location: 'St. Luke’s Hospital, Easton, PA',
+              date: 'November 15',
+              time: '9 am - 12 pm',
+              price: 'Free',
+              imageUrl: 'https://picsum.photos/300/200?random=22'
+            },
+            {
+              title: 'Craft Night for Families',
+              location: 'Easton Community Center, 901 Northampton St, Easton, PA',
+              date: 'November 16',
+              time: '5 pm - 7 pm',
+              price: '$4 per family',
+              imageUrl: 'https://picsum.photos/300/200?random=26'
+            },
+            {
+              title: 'Community Yoga Class',
+              location: 'Easton Yoga Center, 119 N 3rd St, Easton, PA',
+              date: 'November 18',
+              time: '8 am - 9 am',
+              price: '$10',
+              imageUrl: 'https://picsum.photos/300/200?random=27'
+            },
+            {
+              title: 'Free Job Training: Resume Building & Interview Skills',
+              location: 'Star Community Health, 220 Ferry St, Easton, PA 18042',
+              date: 'November 20',
+              time: '10 am - 1 pm',
+              price: 'Free',
+              imageUrl: 'https://picsum.photos/300/200?random=13'
+            },
+            {
+              title: 'Holiday Cookie Decorating Workshop',
+              location: 'Easton Baking Co., 1150 Northampton St, Easton, PA',
+              date: 'November 22',
+              time: '3 pm - 5 pm',
+              price: '$12',
+              imageUrl: 'https://picsum.photos/300/200?random=28'
+            },
+            {
+              title: 'Free Food Pantry at Salvation Army',
+              location: 'Salvation Army, 1110 Northampton St, Easton, PA 18042',
+              date: 'November 23',
+              time: '10 am - 12 pm',
+              price: 'Free',
+              imageUrl: 'https://picsum.photos/300/200?random=15'
+            },
+            {
+              title: 'Kids Science Workshop',
+              location: 'Easton Science Center, 123 Main St, Easton, PA',
+              date: 'November 24',
+              time: '10 am - 11:30 am',
+              price: '$7',
+              imageUrl: 'https://picsum.photos/300/200?random=29'
+            },
+            {
+              title: 'Free Job Search & Career Counseling',
+              location: '220 Ferry St, Easton, PA',
+              date: 'November 25',
+              time: '10 am - 2 pm',
+              price: 'Free',
+              imageUrl: 'https://picsum.photos/300/200?random=7'
+            },
+            {
+              title: 'ESL Classes for Immigrants',
+              location: 'Easton Public Library, 515 Church St, Easton, PA 18042',
+              date: 'November 28',
+              time: '6 pm - 8 pm',
+              price: '$2',
+              imageUrl: 'https://picsum.photos/300/200?random=19'
+            },
+            {
+              title: 'Community Pottery Workshop',
+              location: 'Easton Art Studio, 200 Ferry St, Easton, PA',
+              date: 'December 1',
+              time: '2 pm - 4 pm',
+              price: '$11',
+              imageUrl: 'https://picsum.photos/300/200?random=30'
+            },
+            {
+              title: 'Free Food for Families at Weis Markets',
+              location: 'Weis Markets #168, 3825 Sullivan Trl, Easton, PA 18040',
+              date: 'December 2',
+              time: '10 am - 3 pm',
+              price: 'Free',
+              imageUrl: 'https://picsum.photos/300/200?random=11'
+            },
+            {
+              title: 'Music for Mental Health - Live Performance',
+              location: 'Easton Community Center, 901 Northampton St, Easton, PA',
+              date: 'December 3',
+              time: '7 pm - 9 pm',
+              price: '$9',
+              imageUrl: 'https://picsum.photos/300/200?random=31'
+            },
+            {
+              title: 'Free Parenting Classes & Support Group',
+              location: 'Star Community Health, 220 Ferry St, Easton, PA 18042',
+              date: 'December 5',
+              time: '9 am - 12 pm',
+              price: 'Free',
+              imageUrl: 'https://picsum.photos/300/200?random=21'
+            },
+            {
+              title: 'Meditation Workshop for Beginners',
+              location: 'Easton Wellness Center, 33 E 3rd St, Easton, PA',
+              date: 'December 8',
+              time: '10 am - 11:30 am',
+              price: '$6',
+              imageUrl: 'https://picsum.photos/300/200?random=32'
+            },
+            {
+              title: 'Holiday Card Crafting for Kids',
+              location: 'Easton Library, 515 Church St, Easton, PA 18042',
+              date: 'December 9',
+              time: '4 pm - 5:30 pm',
+              price: '$2',
+              imageUrl: 'https://picsum.photos/300/200?random=33'
+            },
+            {
+              title: 'Free Food Distribution at Easton Hunger Coalition Pantry',
+              location: '1299 N 13th St, Easton, PA 18042',
+              date: 'December 10',
+              time: '10 am - 2 pm',
+              price: 'Free',
+              imageUrl: 'https://picsum.photos/300/200?random=5'
+            }
+          ];
+
+
+          
+        
+          // Function to render event cards dynamically
+          function renderEventCards() {
+            const container = document.getElementById('eventsContainer');
+            container.innerHTML = ''; // Clear the container before adding new cards
+        
+            events.forEach(event => {
+              const cardHTML = `
+                  <div class="col">
+                    <div class="card h-100">
+                      <img src="${event.imageUrl}" class="card-img-top rounded" alt="${event.title}">
+                      <div class="card-body text-start"> <!-- Add 'text-start' here to left-align the text -->
+                        <h5 class="card-title">${event.title}</h5>
+                        <p class="card-text">
+                          <i class="bi bi-geo-alt"></i> ${event.location}<br>
+                          <i class="bi bi-calendar3"></i> ${event.date}<br>
+                          <i class="bi bi-clock"></i> ${event.time}<br>
+                          <i class="bi bi-currency-dollar"></i> <span class="text-success">${event.price}</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                `;
+
+              container.innerHTML += cardHTML; // Append each card to the container
+            });
+          }
+        
+          // Call the function to render the event cards
+          renderEventCards();
+        </script>
+    </div>
 </body>
 </html>
