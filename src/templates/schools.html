@@ -185,7 +185,8 @@
         function initMap() {
             const map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 14,
-                center: { lat: 40.689248, lng: -75.231458 } // Centering on a middle location
+                center: { lat: 40.689248, lng: -75.231458 }, // Centering on a middle location
+                streetViewControl: false
             });
     
             const locations = [
