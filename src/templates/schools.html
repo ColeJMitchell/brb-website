@@ -184,12 +184,17 @@
     <script>
         function initMap() {
             const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 12,
-                center: { lat: 40.688248, lng: -75.216458 } // Centering on a middle location
+                zoom: 14,
+                center: { lat: 40.689248, lng: -75.231458 } // Centering on a middle location
             });
     
             const locations = [
-                { lat: 40.11285256, lng: -74.93137643, title: "Bensalem Twp HS" }
+                {lat : 40.6841, lng: -75.2440}, //Wilson Area High School
+                {lat : 40.703074243129336, lng: -75.20432066137643}, //Fracis A. March Elementary School
+                {lat : 40.68232728213994, lng: -75.25243665396768}, //Easton Area High School
+                {lat : 40.69127983007488, lng: -75.22700389259126}, //Paxinosa Elementary School
+                {lat : 40.70537389617595, lng : -75.22998108465589}, //Easton Area Middle School
+                {lat : 40.68603042408545, lng : -75.23877035396768} //St Jane Frances de Chantal School
             ];
     
             locations.forEach(location => {
