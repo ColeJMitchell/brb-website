@@ -180,34 +180,83 @@
        
 
     </div>
-
+    {% load static %}
     <script>
         function initMap() {
             const map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 14,
-                center: { lat: 40.689248, lng: -75.231458 }, // Centering on a middle location
+                center: { lat: 40.689248, lng: -75.231458 },
                 streetViewControl: false
             });
     
             const locations = [
-                {lat : 40.6841, lng: -75.2440}, //Wilson Area High School
-                {lat : 40.703074243129336, lng: -75.20432066137643}, //Fracis A. March Elementary School
-                {lat : 40.68232728213994, lng: -75.25243665396768}, //Easton Area High School
-                {lat : 40.69127983007488, lng: -75.22700389259126}, //Paxinosa Elementary School
-                {lat : 40.70537389617595, lng : -75.22998108465589}, //Easton Area Middle School
-                {lat : 40.68603042408545, lng : -75.23877035396768} //St Jane Frances de Chantal School
+                { lat: 40.6841, lng: -75.2440, title: "Wilson Area High School", imageurl : "{% static 'easton3.jpg' %}" },
+                { lat: 40.703074243129336, lng: -75.20432066137643, title: "Francis A. March Elementary School", imageurl : "{% static 'march.JPG' %}"},
+                { lat: 40.68232728213994, lng: -75.25243665396768, title: "Easton Area High School", imageurl : "{% static 'easton3.jpg' %}" },
+                { lat: 40.69127983007488, lng: -75.22700389259126, title: "Paxinosa Elementary School", imageurl : "{% static 'easton3.jpg' %}" },
+                { lat: 40.70537389617595, lng: -75.22998108465589, title: "Easton Area Middle School", imageurl : "{% static 'easton3.jpg' %}" },
+                { lat: 40.68603042408545, lng: -75.23877035396768, title: "St Jane Frances de Chantal School", imageurl : "{% static 'easton3.jpg' %}" }
             ];
     
+            const customInfoWindow = document.createElement("div");
+            customInfoWindow.style.position = "absolute";
+            customInfoWindow.style.backgroundColor = "white";
+            customInfoWindow.style.borderRadius = "5px";
+            customInfoWindow.style.fontFamily = "'Bebas Neue', sans-serif";
+            customInfoWindow.style.fontSize = "3vw";
+            customInfoWindow.style.display = "none";
+            customInfoWindow.style.width = "30vw";
+            customInfoWindow.style.whiteSpace = "wrap";
+            customInfoWindow.style.height = "30vw";
+            customInfoWindow.style.zIndex = "1000";
+            document.getElementById("map").appendChild(customInfoWindow); 
+    
+            const overlay = new google.maps.OverlayView();
+            overlay.onAdd = function () {
+                const panes = this.getPanes();
+                panes.overlayMouseTarget.appendChild(customInfoWindow);
+            };
+    
+            overlay.draw = function () { };
+    
+            overlay.setMap(map);
+    
             locations.forEach(location => {
-                new google.maps.Marker({
+                const marker = new google.maps.Marker({
                     position: { lat: location.lat, lng: location.lng },
                     map: map,
-                    title: location.title
+                    title: location.title,
+                    clickable: true
+                });
+    
+                marker.addListener("mouseover", () => {
+                    marker.setTitle(""); 
+                    customInfoWindow.innerHTML = `
+                    <div>
+                        <h3>${location.title}</h3>
+                        <img src=${location.imageurl} alt="${location.title}" style="max-width: 30vw; max-height: 40vw;"/>
+                    </div>
+                    `;
+                    customInfoWindow.style.display = "block";
+    
+                    const projection = overlay.getProjection();
+                    const position = projection.fromLatLngToDivPixel(marker.getPosition());
+    
+                    customInfoWindow.style.left = position.x + "px";
+                    customInfoWindow.style.top = position.y + "px";
+                });
+    
+                marker.addListener("mouseout", () => {
+                    customInfoWindow.style.display = "none";
+                });
+    
+                marker.addListener("click", () => {
+                    customInfoWindow.style.display = "none";
+                    marker.setTitle("");
                 });
             });
         }
-        </script>
-    
+    </script>
     
         <script async defer
         src="https://maps.googleapis.com/maps/api/js?key={{api_key}}&callback=initMap&">
