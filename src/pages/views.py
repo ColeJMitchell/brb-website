@@ -18,6 +18,12 @@ def communities(request):
 def aboutus(request):
     if request.method == "POST":
         return render(request, "aboutus.html")
+    
+def spanish_aboutus(request):
+    if request.method == "POST":
+        return render(request, "spanish_aboutus.html")
+    return render(request, 'spanish_aboutus.html')
+
 
 def food(request):
     if request.method == "POST":

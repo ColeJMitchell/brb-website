@@ -24,6 +24,7 @@ from pages.views import healthcare
 from pages.views import schools
 from pages.views import events
 from pages.views import spanish_home
+from pages.views import spanish_aboutus
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,4 +36,5 @@ urlpatterns = [
     path('events/', events, name='events'),
     path('', home, name='home'),
     path('spanish_home/', spanish_home, name='spanish_home'),
+    path('spanish_aboutus/', spanish_aboutus, name='spanish_aboutus'),
 ]
