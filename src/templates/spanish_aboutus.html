@@ -11,7 +11,11 @@
         body {
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            overflow: scroll;
+        }
+        html{
+            scroll-behavior: smooth;
+            padding-bottom: 75px;
         }
         .container-fluid {
             padding: 0;
@@ -63,7 +67,7 @@
         .custom-button {
             color: yellow;
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.2vw;
+            font-size: 2vw;
             outline: none;
             border: none;
         }
@@ -123,12 +127,11 @@
         }
 
         .spanish {
-            background-color: rgb(255, 68, 68) !important;
+            background-color: greenyellow !important;
             font-weight: bold;
-          
         }
         .english {
-            background-color: greenyellow !important;
+            background-color: rgb(255, 68, 68) !important;
             font-weight: bold;
         }
 
@@ -139,50 +142,50 @@
         <div class="row d-flex justify-content-around" style="background-color: black; height: 10vh;">
 
             <div class="col d-flex justify-content-center align-items-center position-relative">
-                <form method="post" action="{% url 'home' %}">
+                <form method="post" action="{% url 'spanish_home' %}">
                     {% csrf_token %}
-                <button class = "btn custom-button" type = "submit">Home</btn>
+                <button class = "btn custom-button " type = "submit">Hogar</btn>
                 </form>
             </div> 
 
             <div class="col d-flex justify-content-center align-items-center position-relative">
                 <form method="post" action="{% url 'schools' %}">
                     {% csrf_token %}
-                <button class = "btn custom-button " type = "submit">Schools</btn>
+                <button class = "btn custom-button " type = "submit">Escuelas</btn>
                 </form>
             </div> 
 
             <div class="col d-flex justify-content-center align-items-center position-relative">
                 <form method="post" action="{% url 'healthcare' %}">
                     {% csrf_token %}
-                <button class = "btn custom-button" type = "submit">Healthcare</btn>
+                <button class = "btn custom-button" type = "submit">Salud</btn>
                 </form>
-            </div>
+            </div>  
 
-                <div class="col d-flex justify-content-center align-items-center position-relative">
-                    <form method="post" action="{% url 'food' %}">
-                        {% csrf_token %}
-                    <button class = "btn custom-button" type = "submit">Food</btn>
-                    </form>
-                </div>
+            <div class="col d-flex justify-content-center align-items-center position-relative">
+                <form method="post" action="{% url 'food' %}">
+                    {% csrf_token %}
+                <button class = "btn custom-button" type = "submit">Comida</btn>
+                </form>
+            </div> 
 
             <div class="col d-flex justify-content-center align-items-center position-relative">
                 <form method="post" action="{% url 'communities' %}">
                     {% csrf_token %}
-                <button class = "btn custom-button" type = "submit" >Communities</btn>
+                <button class = "btn custom-button" type = "submit">Comunidades</btn>
                 </form>
-            </div>
+            </div> 
 
             <div class="col d-flex justify-content-center align-items-center position-relative">
                 <form method="post" action="{% url 'events' %}">
                     {% csrf_token %}
-                <button class = "btn custom-button" type = "submit">Events</btn>
+                <button class = "btn custom-button" type = "submit" >Eventos</btn>
                 </form>
-            </div> 
+            </div>
 
-            <div class="col d-flex justify-content-center align-items-center position-relative" style="background-color: green;">
-                <btn class="custom-button">About Us</h1>
-                </div> 
+            <div class="col-2 d-flex justify-content-center align-items-center position-relative" style="background-color: green;">
+                <btn class="custom-button">Acerca de Nosotros</h1>
+            </div> 
 
         </div>
        
@@ -190,43 +193,99 @@
             <div class="col-10 d-flex justify-content-end align-items-center">
                 <div class="btn-group" style="text-align: right;" role="group" aria-label="Language selection">
 
-                    <label class="btn select-button english" id="english" for="english">English</label>
-
-                    <form method="post" action="{% url 'spanish_aboutus' %}">
+                    <form method="post" action="{% url 'aboutus' %}">
                         {% csrf_token %}
-                    <button class = "btn select-button spanish" type = "submit">Spanish</btn>
+                        <button class="btn select-button english" type="submit">Inglés</button>
                     </form>
+                        <button class="btn select-button spanish" type="submit">Español</button>
 
                 </div>
             </div>
         </div>
         <div class="row">
-            <h1 class="main-header">About us</h1>
+            <h1 class="main-header">Abeja Listo: Visión General</h1>
             
-            <h2 class="secondary-header">Our Mission</h2>
+<h2 class="secondary-header">Nuestra Misión</h2>
 
-            <p class="paragraph-style">
-                To provide outreach directly to underserved neighborhoods that will promote critical early learning for <br>
-                children impacted by poverty. Bee Ready will be built on a strong partnership between parents and a <br>
-                dedicated community that together develops, governs, and evaluates an approach that strengthens the <br>
-                role of parents as primary teachers and advocates for life-long education.</p>
+<p class="paragraph-style">
+    Brindar outreach directamente a vecindarios desatendidos que promoverán el aprendizaje temprano crítico para <br>
+    niños afectados por la pobreza. Bee Ready se basará en una sólida asociación entre padres y una <br>
+    comunidad dedicada que juntos desarrollan, gobiernan y evalúan un enfoque que fortalece el <br>
+    rol de los padres como maestros principales y defensores de la educación de por vida.</p>
 
-                <h3 class="secondary-header">Our Vision</h3>
-    
-                <p2 class="paragraph-style">
-                    All families will have the knowledge, skills and resources to ensure their child will enter school <br>
-                    socially, emotionally, physically and educationally ready to learn and succeed.</p2>
-                
-                <h3 class="main-header">Meet Our Team</h3>
+<h3 class="secondary-header">Nuestra Visión</h3>
 
-                <h3 class="secondary-header">Patricia A. Hunter</h3>
-                <p3 class="paragraph-style">
-                    has 40 years of experience in the educational field and more than 15 years of <br>
-                    executive-level experience in early childhood administration. She was the CEO of an education <br>
-                    and childcare facility. She has developed child and family engagement programs and built <br>
-                    relationships leading to organizing community collaborations. <br>
+<p2 class="paragraph-style">
+    Todas las familias tendrán el conocimiento, las habilidades y los recursos para garantizar que su hijo entre a la escuela <br>
+    social, emocional, física y educativamente listo para aprender y tener éxito.</p2>
 
-                </p3>             
+<h3 class="main-header" style="margin-top: 7vh;">Conoce a Nuestro Equipo</h3>
+
+<h3 class="secondary-header">Patricia A. Hunter</h3>
+<p3 class="paragraph-style">
+    Tiene 40 años de experiencia en el campo educativo y más de 15 años de <br>
+    experiencia en nivel ejecutivo en la administración de la infancia temprana. Fue la directora ejecutiva de una instalación educativa <br>
+    y de cuidado infantil. Ha desarrollado programas de participación infantil y familiar y ha construido <br>
+    relaciones que conducen a la organización de colaboraciones comunitarias. 
+</p3>
+
+<h4 class="secondary-header">Henry Hernandez</h4>
+<p4 class="paragraph-style">
+    Es un líder dinámico que actualmente se desempeña como Consultor Senior de Relaciones Comunitarias <br>
+    en Capital Blue Cross. Se unió al equipo en 2021 y trajo consigo valiosa <br>
+    experiencia adquirida como Navegador Senior de Salud para AmeriHealth Caritas Pennsylvania. En su rol <br>
+    en el equipo de responsabilidad social corporativa, Henry está dedicado a generar conciencia y <br>
+    liderar la divulgación comunitaria para CHIP (Programa de Seguro Médico para Niños) en la <br>
+    vibrante región de Lehigh Valley y la región norte, que incluye los condados de Union, Snyder, Columbia, Montour, <br>
+    y Northumberland.
+</p4>
+
+<h5 class="secondary-header">Rosemary Kocher</h5>
+<p5 class="paragraph-style">
+    Ha sido educadora durante más de treinta años, con veintitrés de esos años <br>
+    en el Distrito Escolar de Bangor. Rosemary tiene una Licenciatura en Educación Primaria y una Maestría en <br>
+    Lectura. Además, también es profesora certificada en educación especial y especialista en lectura. <br>
+    Posee una certificación de Supervisora de Lectura y una certificación Administrativa. Rosemary ha <br>
+    enseñado segundo grado, educación especial, lectura y matemáticas de habilidades básicas, y lectura. Ha <br>
+    sido Coordinadora del Título I, Directora de Educación Primaria, Subdirectora de Escuelas Primarias y Secundarias <br>
+    y Directora de Apoyo Instruccional. Rosemary ha ayudado a crear <br>
+    programas para niños de preschool a secundaria, así como programas para padres y desarrollo de personal <br>
+    para maestros.
+</p5>
+
+<h6 class="secondary-header">Nancy D. Nicholas</h6>
+<p6 class="paragraph-style">
+    Fue profesora de kindergarten en el Distrito Escolar del Área de Easton durante 40 años. <br>
+    Además, fue asesora voluntaria durante más de diez años con Family Connection de Easton en <br>
+    el Distrito Escolar de Easton. Ayudó a crear actividades apropiadas para el desarrollo de niños y familias, <br>
+    asistió con la implementación de programas para niños, familias y personal de <br>
+    preschool, y coordinó actividades de transición para niños entrantes de kindergarten en sus <br>
+    preschooles. Nancy fue miembro del comité que creó el Plan Formal de Transición del Distrito Escolar del Área de Easton.
+</p6>
+
+<h7 class="secondary-header">Terry Thomas</h7>
+<p7 class="paragraph-style">
+    Ha pasado casi cincuenta años en el campo de la infancia temprana. Con su <br>
+    licenciatura en educación y psicología y una maestría en Educación Infantil <br>
+    y Desarrollo Infantil, estuvo preparada para sus futuros proyectos. Su carrera ha <br>
+    incluido, pero no se ha limitado, al rol de Directora de programas de educación infantil y para niños en edad escolar, <br>
+    consultora y mentora en educación infantil. Durante muchos años, brindó apoyo clínico <br>
+    en una gran práctica pediátrica trabajando con niños desde el nacimiento hasta los cinco años y sus <br>
+    familias… sobre el desarrollo infantil, nutrición, comportamiento, sueño, bienestar emocional, y muchos <br>
+    otros aspectos del crecimiento y desarrollo infantil.
+</p7>
+
+<h8 class="secondary-header">Maryanne West</h8>
+<p8 class="paragraph-style">
+    Es graduada de la Escuela de Enfermería del Hospital St. Luke’s y de la Universidad Rutgers <br>
+    con una licenciatura en Psicología. Anteriormente trabajó en enfermería geriátrica y como profesora suplente <br>
+    mientras sus hijos estaban en la escuela. Recientemente, Maryanne trabajó como Coordinadora de Conexión Infantil <br>
+    para Family Connection/Family Center en el Distrito Escolar de Easton. En ese rol, <br>
+    creó un plan formal de transición de kindergarten, organizó e implementó actividades de participación familiar <br>
+    y Diálogos con maestros, e inició eventos y actividades comunitarias como Lectura <br>
+    Bajo las Luces, Bibliotecas en Barberías, e Intercambio con padres y estudiantes de Lafayette College.
+</p8>
+        
         </div>
     </div>
 </body>
