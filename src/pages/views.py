@@ -6,6 +6,11 @@ def home(request):
         return render(request, "home.html")
     return render(request, 'home.html')
 
+def spanish_home(request):
+    if request.method == "POST":
+        return render(request, "spanish_home.html")
+    return render(request, 'spanish_home.html')
+
 def communities(request):
     if request.method == "POST":
         return render(request, "communities.html")
