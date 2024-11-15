@@ -24,7 +24,6 @@ def spanish_aboutus(request):
         return render(request, "spanish_aboutus.html")
     return render(request, 'spanish_aboutus.html')
 
-
 def food(request):
     if request.method == "POST":
         return render(request, "food.html")
@@ -39,7 +38,13 @@ def schools(request):
     if request.method == "POST":
         return render(request, "schools.html", {"api_key": api_key})
 
+def spanish_schools(request):
+    api_key = settings.MAP_API_KEY
+    print(api_key)
+    if request.method == "POST":
+        return render(request, "spanish_schools.html", {"api_key": api_key})
 
 def events(request):
     if request.method == "POST":
         return render(request, "events.html")
+    
