@@ -98,6 +98,16 @@
             }
         }
 
+        .spanish {
+            background-color: rgb(255, 68, 68) !important;
+            font-weight: bold;
+          
+        }
+        .english {
+            background-color: greenyellow !important;
+            font-weight: bold;
+        }
+
     </style>
 </head>
 <body>
@@ -154,20 +164,16 @@
         </div>
        
         <div class="row d-flex justify-content-around" style="background-color: yellow; height: 5vh;">
-            <div class="col-6 d-flex justify-content-center align-items-center">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn" style="background-color: black; color: white;" type="submit">Search</button>
-                </form>
-            </div>
-            <div class="col-6 d-flex justify-content-center align-items-center">
-                <div class="btn-group" role="group" aria-label="Language selection" style="background-color: white;">
-                    <input type="radio" class="btn-check" name="language" id="english" autocomplete="off" checked>
-                    <label class="btn select-button" for="english">English</label>
+    
+            <div class="col-10 d-flex justify-content-end align-items-center">
 
-                    <input type="radio" class="btn-check" name="language" id="spanish" autocomplete="off">
-                    <label class="btn select-button" for="spanish">Spanish</label>
-                </div>
+                <label class="btn select-button english" id="english" for="english">English</label>
+
+                <form method="post" action="{% url 'spanish_home' %}">
+                    {% csrf_token %}
+                <button class = "btn select-button spanish" type = "submit">Spanish</btn>
+                </form>
+
             </div>
         </div>
         
@@ -190,12 +196,12 @@
             });
     
             const locations = [
-                { lat: 40.6841, lng: -75.2440, title: "Wilson Area High School", imageurl : "{% static 'easton3.jpg' %}" },
-                { lat: 40.703074243129336, lng: -75.20432066137643, title: "Francis A. March Elementary School", imageurl : "{% static 'march.JPG' %}"},
-                { lat: 40.68232728213994, lng: -75.25243665396768, title: "Easton Area High School", imageurl : "{% static 'easton3.jpg' %}" },
-                { lat: 40.69127983007488, lng: -75.22700389259126, title: "Paxinosa Elementary School", imageurl : "{% static 'easton3.jpg' %}" },
-                { lat: 40.70537389617595, lng: -75.22998108465589, title: "Easton Area Middle School", imageurl : "{% static 'easton3.jpg' %}" },
-                { lat: 40.68603042408545, lng: -75.23877035396768, title: "St Jane Frances de Chantal School", imageurl : "{% static 'easton3.jpg' %}" }
+                { lat: 40.6841, lng: -75.2440, title: "Wilson Area High School", imageurl : "{% static 'wilson.jpg' %}", phonenumber: "(484) 373-6030", address: "424 Warrior Ln, Easton, PA 18042", website: "http://www.wilsonareasd.org/" },
+                { lat: 40.703074243129336, lng: -75.20432066137643, title: "Francis A. March Elementary School", imageurl : "{% static 'march.JPG' %}", phonenumber: "(610) 250-2531", address: "429 Reeder St, Easton, PA 18042", website: "https://march.eastonsd.org/"},
+                { lat: 40.68232728213994, lng: -75.25243665396768, title: "Easton Area High School", imageurl : "{% static 'easton_high.png' %}", phonenumber: "(610) 250-2481", address: "2601 William Penn Hwy, Easton, PA 18045", website: "http://www.eastonsd.org/"},
+                { lat: 40.69127983007488, lng: -75.22700389259126, title: "Paxinosa Elementary School", imageurl : "{% static 'paxinosa.jpg' %}", phonenumber: "(610) 250-2551", address: "1221 Northampton St, Easton, PA 18042", website: "https://paxinosa.eastonsd.org/"},
+                { lat: 40.70537389617595, lng: -75.22998108465589, title: "Easton Area Middle School", imageurl : "{% static 'easton_middle.jpg' %}", phonenumber: "(610) 250-2460", address:"1010 Echo Trail, Easton, PA 18040", website: "http://www.eastonsd.org/"},
+                { lat: 40.68603042408545, lng: -75.23877035396768, title: "St Jane Frances de Chantal School", imageurl : "{% static 'jane.jpg' %}", phonenumber: "(610) 253-8442", address: "1900 Washington Blvd, Easton, PA 18042", website: "http://www.stjaneschool.com/"}
             ];
     
             const customInfoWindow = document.createElement("div");
@@ -207,7 +213,7 @@
             customInfoWindow.style.display = "none";
             customInfoWindow.style.width = "30vw";
             customInfoWindow.style.whiteSpace = "wrap";
-            customInfoWindow.style.height = "30vw";
+            customInfoWindow.style.height = "10vw";
             customInfoWindow.style.zIndex = "1000";
             document.getElementById("map").appendChild(customInfoWindow); 
     
@@ -233,7 +239,9 @@
                     marker.setTitle(""); 
                     customInfoWindow.innerHTML = `
                     <div>
-                        <h3>${location.title}</h3>
+                        <h1>${location.title}</h1>
+                        <h3>Address: ${location.address}</h3>
+                        <h3>Phone: ${location.phonenumber}</h3>
                         <img src=${location.imageurl} alt="${location.title}" style="max-width: 30vw; max-height: 40vw;"/>
                     </div>
                     `;
