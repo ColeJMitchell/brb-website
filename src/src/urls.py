@@ -25,6 +25,7 @@ from pages.views import schools
 from pages.views import events
 from pages.views import spanish_home
 from pages.views import spanish_aboutus
+from pages.views import spanish_schools
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,4 +38,5 @@ urlpatterns = [
     path('', home, name='home'),
     path('spanish_home/', spanish_home, name='spanish_home'),
     path('spanish_aboutus/', spanish_aboutus, name='spanish_aboutus'),
+    path('spanish_schools/', spanish_schools, name='spanish_schools'),
 ]
