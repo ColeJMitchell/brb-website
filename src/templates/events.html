@@ -96,6 +96,11 @@
             }
         }
 
+        .card {
+          border-radius: 20px;
+          overflow: hidden;
+        }
+
         /* Limit the size of card images */
         .card-img-top {
           max-height: 200px;
@@ -418,7 +423,7 @@
               const cardHTML = `
                   <div class="col">
                     <div class="card h-100">
-                      <img src="${mediaPath + event.imagename}" class="card-img-top rounded" alt="${event.title}">
+                      <img src="${mediaPath + event.imagename}" class="card-img-top" alt="${event.title}">
                       <div class="card-body text-start"> <!-- Add 'text-start' here to left-align the text -->
                         <h5 class="card-title">${event.title}</h5>
                         <p class="card-text">
