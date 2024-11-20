@@ -22,7 +22,7 @@
         }
         .image-container {
             position: relative;
-            width: 100px;
+            width: 100%;
             height: 88vh;
         }
         .overlay-head {
@@ -177,8 +177,13 @@
             cursor: pointer;
         }
 
+        /*gets rid of blocks*/
+        #google_translate_element a {
+            display: none;
+        }
         /* Ensure iframe styles are included to avoid default sizing */
         #google_translate_element {
+            color: transparent;
             width: 50 !important; /* or specify a fixed width */
             max-width: 50px; /* Set a max-width to control size */
         }
@@ -200,33 +205,28 @@
 </head>
 <body>
     <div class="container-fluid">
-        
+         <!-- black header bar -->
         <div class="row d-flex justify-content-around" style="background-color: black; height: 10vh;">
-             <!-- black header bar -->
             <div class="col d-flex justify-content-center align-items-center position-relative">
-                <form method="post" action="{% url 'home' %}">
-                    {% csrf_token %} <!-- link to homepage-->
+                <form method="post" action="{% url 'home' %}"> <!-- link to homepage-->
                 <button class = "btn custom-button" type = "submit">Home</btn>
                 </form>
             </div> 
 
             <div class="col d-flex justify-content-center align-items-center position-relative">
-                <form method="post" action="{% url 'schools' %}">
-                    {% csrf_token %} <!-- link to schools page -->
+                <form method="post" action="{% url 'schools' %}"> <!-- link to schools page -->
                 <button class = "btn custom-button " type = "submit">Schools</btn>
                 </form>
             </div> 
 
             <div class="col d-flex justify-content-center align-items-center position-relative">
-                <form method="post" action="{% url 'healthcare' %}">
-                    {% csrf_token %} <!-- link to healthcare-->
+                <form method="post" action="{% url 'healthcare' %}"><!-- link to healthcare-->
                 <button class = "btn custom-button" type = "submit">Healthcare</btn>
                 </form>
             </div>  
 
             <div class="col d-flex justify-content-center align-items-center position-relative">
-                <form method="post" action="{% url 'food' %}">
-                    {% csrf_token %} <!-- link to food page-->
+                <form method="post" action="{% url 'food' %}"><!-- link to food page-->
                 <button class = "btn custom-button" type = "submit">Food</btn>
                 </form>
             </div> 
@@ -237,15 +237,13 @@
                 </div> 
 
             <div class="col d-flex justify-content-center align-items-center position-relative">
-                <form method="post" action="{% url 'events' %}">
-                    {% csrf_token %} <!-- link to events page-->
+                <form method="post" action="{% url 'events' %}"><!-- link to events page-->
                 <button class = "btn custom-button" type = "submit" >Events</btn>
                 </form>
             </div>
 
             <div class="col d-flex justify-content-center align-items-center position-relative">
-                <form method="post" action="{% url 'aboutus' %}">
-                    {% csrf_token %} <!-- link to about us page -->
+                <form method="post" action="{% url 'aboutus' %}"><!-- link to about us page -->
                 <button class = "btn custom-button" type = "submit">About Us</btn>
                 </form>
             </div>
@@ -262,9 +260,9 @@
             </div>
             <div class="col-6 d-flex justify-content-center align-items-center">
                  <!-- language button -->
-                <div class="btn-group" role="group" aria-label="Language selection" style="background-color: white;">
-                    <button class="tbutton" id="translateButton">Translate</button>
-                    <div id="google_translate_element"></div> <!-- Translation tool will be inserted here -->
+                <div class="btn-group" role="group" aria-label="Language selection" style="background-color: yellow; height:30px;">
+                    
+                    <div id="google_translate_element" width = 30px height = 30px></div> <!-- Translation tool will be inserted here -->
                     <script type="text/javascript">
                         function googleTranslateElementInit() {
                             new google.translate.TranslateElement({
@@ -312,20 +310,32 @@
                         });
                     });
                     </script>
+                    <br>
+                    <br>
+                    <p>Click G to translate!</p>
                     
                 <br>
                 <br>
                 <br>
                 </div>
             </div>
+        </div>    
 
         <div class = "container comms-containter">
             <div class = "row"></div>
                 <!-- hyperlink buttons-->
                 <div class='myDiv'>
-                    <button style='margin-right:32px'>Churches</button>
-                    <button style='margin-left:32px'>Networks</button>
-                    <button style='margin-left:68px'>Forums</button>
+                    <h3>Select one of the following categories: </h3>
+                    <a href="http://127.0.0.1:3002/communities_churches">
+                        <button style='margin-right:32px'>Churches</button>
+                    </a>
+                    <a href="http://127.0.0.1:3002/communities_networks#">
+                        <button style='margin-right:32px'>Networks</button>
+                    </a>
+                    <a href="http://127.0.0.1:3002/communities_forums">
+                        <button style='margin-right:32px'>Forums</button>
+                    </a>
+
                 </div>
             </div>
             <div class="row">
