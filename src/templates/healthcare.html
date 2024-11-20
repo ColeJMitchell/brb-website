@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeeReadyHealthcare</title>
+    <title>Healthcare</title>
     <style>
         body {
             margin: 0;
@@ -211,24 +211,31 @@
                 <div class="col-md-6 clinics">
                     <div class="clinics-header">Clinics</div>
                     <div class="clinic-card">
-                        <strong>Name:</strong> Clinic 1<br>
-                        <strong>Contact:</strong> (123) 456-7890<br>
+                        <strong>Name:</strong> Two Rivers Health & Wellness Foundation<br>
+                        <strong>Contact:</strong> (484) 544-3113<br>
+                        <strong>Address:</strong> 1101 Northampton Street, Easton, PA 18042<br>
                         <strong>Insurances Accepted:</strong> Insurance A, Insurance B
                     </div>
                     <div class="clinic-card">
-                        <strong>Name:</strong> Clinic 2<br>
-                        <strong>Contact:</strong> (123) 456-7890<br>
-                        <strong>Insurances Accepted:</strong> Insurance C, Insurance D
+                        <strong>Name:</strong> The Children's Home of Easton<br>
+                        <strong>Contact:</strong> (610) 258-2831<br>
+                        <strong>Address:</strong> 2000 S 25th St, Easton, PA 18042<br>
+                        <strong>Insurances Accepted:</strong> Insurance A, Insurance B
                     </div>
                     <!-- Add more clinic cards as needed -->
+                    <div class="clinic-card">
+                        <strong>Name:</strong> Two Rivers Health & Wellness Foundation<br>
+                        <strong>Contact:</strong> (484) 544-3113<br>
+                        <strong>Address:</strong> 1101 Northampton Street, Easton, PA 18042<br>
+                        <strong>Insurances Accepted:</strong> Insurance A, Insurance B
+                    </div>
                 </div>
 
                 <!-- Map Section -->
                 <div class="col-md-6 map">
-                    <div class="map-container">
-                        Map (Embed or Placeholder)
-                    </div>
+                    <div class="map-container" id="map" style="height: 400px;"></div>
                 </div>
+                
             </div>
 
             <!-- Insurances Section -->
@@ -246,5 +253,85 @@
                 </div>
             </div>
         </div>
+
+        {% load static %}
+        <script>
+            function initMap() {
+                const map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 14,
+                    center: { lat: 40.689248, lng: -75.231458 },
+                    streetViewControl: false
+                });
+
+                const locations = [
+                    { lat: 40.69075689817673, lng: -75.22474112883529, title: "Two Rivers Health & Wellness Foundation", phonenumber: "(484) 544-3113", address: "1101 Northampton Street, Easton, PA 18042", website: "https://www.nhclv.org/health-centers/easton/" },
+                    { lat: 40.669570773593385, lng: -75.24113879811037, title: "The Children's Home of Easton", phonenumber: "(610) 258-2831", address: "2000 S 25th St, Easton, PA 18042", website: "https://www.thechildrenshome.org/"},
+                    ];
+
+                const customInfoWindow = document.createElement("div");
+                customInfoWindow.style.position = "absolute";
+                customInfoWindow.style.backgroundColor = "white";
+                customInfoWindow.style.borderRadius = "5px";
+                customInfoWindow.style.fontFamily = "'Bebas Neue', sans-serif";
+                customInfoWindow.style.fontSize = "1vw"; // Adjust font size for better scaling
+                customInfoWindow.style.display = "none";
+                customInfoWindow.style.padding = "10px"; // Add padding for content spacing
+                customInfoWindow.style.maxWidth = "40vw"; // Set maximum width for large content
+                customInfoWindow.style.whiteSpace = "normal"; // Allow text to wrap
+                customInfoWindow.style.zIndex = "1000";
+                document.getElementById("map").appendChild(customInfoWindow);
+
+                const overlay = new google.maps.OverlayView();
+                overlay.onAdd = function () {
+                    const panes = this.getPanes();
+                    panes.overlayMouseTarget.appendChild(customInfoWindow);
+                };
+
+                overlay.draw = function () { };
+
+                overlay.setMap(map);
+
+                locations.forEach(location => {
+                    const marker = new google.maps.Marker({
+                        position: { lat: location.lat, lng: location.lng },
+                        map: map,
+                        title: location.title,
+                        clickable: true
+                    });
+
+                    marker.addListener("mouseover", () => {
+                        marker.setTitle("");
+                        customInfoWindow.innerHTML = `
+                    <div>
+                        <h1>${location.title}</h1>
+                        <h3>Address: ${location.address}</h3>
+                        <h3>Phone: ${location.phonenumber}</h3>
+                    </div>
+                    `;
+                        customInfoWindow.style.display = "block";
+
+                        const projection = overlay.getProjection();
+                        const position = projection.fromLatLngToDivPixel(marker.getPosition());
+
+                        customInfoWindow.style.left = position.x + "px";
+                        customInfoWindow.style.top = position.y + "px";
+                    });
+
+                    marker.addListener("mouseout", () => {
+                        customInfoWindow.style.display = "none";
+                    });
+
+                    marker.addListener("click", () => {
+                        customInfoWindow.style.display = "none";
+                        marker.setTitle("");
+                    });
+                });
+            }
+        </script>
+
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key={{api_key}}&callback=initMap&">
+        </script>
+        
 </body>
 </html>

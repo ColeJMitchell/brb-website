@@ -96,6 +96,11 @@
             }
         }
 
+        .card {
+          border-radius: 20px;
+          overflow: hidden;
+        }
+
         /* Limit the size of card images */
         .card-img-top {
           max-height: 200px;
@@ -194,15 +199,23 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
         
         <script>
+          // get the language selected
+          function getSelectedLanguage() {
+            const selectedLanguage = document.querySelector('input[name="language"]:checked').id;
+            // console.log(`Selected language: ${selectedLanguage}`);
+            return selectedLanguage; // Returns "english" or "spanish"
+          }
+
           // List of events with attributes
-          const events = [
+          const eventsENG = [
             {
               title: 'WIC Enrollment - Women, Infants, Children',
               location: 'Giant Food Store #6255, 801 S 25th St, Easton, PA 18045',
               date: 'Today',
               time: '9 am - 4 pm',
               price: 'Free',
-              imageUrl: 'https://picsum.photos/300/200?random=1'
+              imagename: "motherandbaby.jpg",
+              // imageUrl: 'https://picsum.photos/300/200?random=1'
             },
             {
               title: 'Project of Easton Food Pantry Distribution',
@@ -210,7 +223,8 @@
               date: 'Today',
               time: '10 am - 12:15 pm, 1 pm - 3:15 pm',
               price: 'Free',
-              imageUrl: 'https://picsum.photos/300/200?random=2'
+              imagename: "FoodPantry_.jpg",
+              // imageUrl: 'https://picsum.photos/300/200?random=2'
             },
             {
               title: 'Free Health Screening at St. Luke\'s Hospital',
@@ -218,111 +232,116 @@
               date: 'Tomorrow',
               time: '9 am - 1 pm',
               price: 'Free',
-              imageUrl: 'https://picsum.photos/300/200?random=3'
+              imagename: "healthscreening.jpg",
+              // imageUrl: 'https://picsum.photos/300/200?random=3'
             },
             {
               title: 'Kids Art Workshop',
               location: 'Easton Arts Center, 2001 Washington St, Easton, PA',
-              date: 'November 10',
+              date: 'November 22',
               time: '10 am - 12 pm',
               price: '$5',
-              imageUrl: 'https://picsum.photos/300/200?random=24'
+              imagename: "painting-workshop.webp",
+              // imageUrl: 'https://picsum.photos/300/200?random=24'
             },
             {
               title: 'Neighborhood Health Centers Dental Services',
               location: '1101 Northampton St, Easton, PA 18042',
-              date: 'November 12',
+              date: 'November 23',
               time: '9 am - 5 pm',
               price: '$8 (sliding scale)',
-              imageUrl: 'https://picsum.photos/300/200?random=6'
-            },
-            {
-              title: 'Community Movie Night',
-              location: 'Easton Public Library, 515 Church St, Easton, PA 18042',
-              date: 'November 13',
-              time: '6 pm - 8 pm',
-              price: '$3',
-              imageUrl: 'https://picsum.photos/300/200?random=25'
+              imagename: "dental.jpg",
+              // imageUrl: 'https://picsum.photos/300/200?random=6'
             },
             {
               title: 'WIC Grocery Pickup Assistance',
               location: 'Redner\'s Market #78, 3745 Nicholas St, Easton, PA 18045',
-              date: 'November 14',
+              date: 'November 25',
               time: '10 am - 4 pm',
               price: 'Free',
-              imageUrl: 'https://picsum.photos/300/200?random=8'
+              imagename: "grocerypickup.webp",
+              // imageUrl: 'https://picsum.photos/300/200?random=8'
+            },
+            {
+              title: 'Community Movie Night',
+              location: 'Easton Public Library, 515 Church St, Easton, PA 18042',
+              date: 'November 25',
+              time: '6 pm - 8 pm',
+              price: '$3',
+              imagename: "movienight.jpg",
+              // imageUrl: 'https://picsum.photos/300/200?random=25'
             },
             {
               title: 'Free Children’s Health Clinic: Vaccines & Checkups',
               location: 'St. Luke’s Hospital, Easton, PA',
-              date: 'November 15',
+              date: 'November 28',
               time: '9 am - 12 pm',
               price: 'Free',
-              imageUrl: 'https://picsum.photos/300/200?random=22'
+              imagename: "vaccines.jpg",
+              // imageUrl: 'https://picsum.photos/300/200?random=22'
             },
             {
               title: 'Craft Night for Families',
               location: 'Easton Community Center, 901 Northampton St, Easton, PA',
-              date: 'November 16',
+              date: 'November 28',
               time: '5 pm - 7 pm',
               price: '$4 per family',
-              imageUrl: 'https://picsum.photos/300/200?random=26'
+              imagename: "craftnight.jpg",
+              // imageUrl: 'https://picsum.photos/300/200?random=26'
             },
             {
               title: 'Community Yoga Class',
               location: 'Easton Yoga Center, 119 N 3rd St, Easton, PA',
-              date: 'November 18',
+              date: 'November 29',
               time: '8 am - 9 am',
               price: '$10',
-              imageUrl: 'https://picsum.photos/300/200?random=27'
+              imagename: "yoga.jpg",
+              // imageUrl: 'https://picsum.photos/300/200?random=27'
             },
             {
               title: 'Free Job Training: Resume Building & Interview Skills',
               location: 'Star Community Health, 220 Ferry St, Easton, PA 18042',
-              date: 'November 20',
+              date: 'November 29',
               time: '10 am - 1 pm',
               price: 'Free',
-              imageUrl: 'https://picsum.photos/300/200?random=13'
+              imagename: "jobs.png",
+              // imageUrl: 'https://picsum.photos/300/200?random=13'
             },
             {
               title: 'Holiday Cookie Decorating Workshop',
               location: 'Easton Baking Co., 1150 Northampton St, Easton, PA',
-              date: 'November 22',
+              date: 'November 29',
               time: '3 pm - 5 pm',
               price: '$12',
-              imageUrl: 'https://picsum.photos/300/200?random=28'
+              imagename: "cookie.webp",
+              // imageUrl: 'https://picsum.photos/300/200?random=28'
             },
             {
               title: 'Free Food Pantry at Salvation Army',
               location: 'Salvation Army, 1110 Northampton St, Easton, PA 18042',
-              date: 'November 23',
+              date: 'November 30',
               time: '10 am - 12 pm',
               price: 'Free',
-              imageUrl: 'https://picsum.photos/300/200?random=15'
+              imagename: "Food-pantry.jpg",
+              // imageUrl: 'https://picsum.photos/300/200?random=15'
             },
             {
               title: 'Kids Science Workshop',
               location: 'Easton Science Center, 123 Main St, Easton, PA',
-              date: 'November 24',
+              date: 'November 30',
               time: '10 am - 11:30 am',
               price: '$7',
-              imageUrl: 'https://picsum.photos/300/200?random=29'
+              imagename: "scienceworkshop.jpg",
+              // imageUrl: 'https://picsum.photos/300/200?random=29'
             },
             {
               title: 'Free Job Search & Career Counseling',
               location: '220 Ferry St, Easton, PA',
-              date: 'November 25',
+              date: 'November 30',
               time: '10 am - 2 pm',
               price: 'Free',
-              imageUrl: 'https://picsum.photos/300/200?random=7'
-            },
-            {
-              title: 'ESL Classes for Immigrants',
-              location: 'Easton Public Library, 515 Church St, Easton, PA 18042',
-              date: 'November 28',
-              time: '6 pm - 8 pm',
-              price: '$2',
-              imageUrl: 'https://picsum.photos/300/200?random=19'
+              imagename: "getajob.webp",
+              // imageUrl: 'https://picsum.photos/300/200?random=7'
             },
             {
               title: 'Community Pottery Workshop',
@@ -330,7 +349,17 @@
               date: 'December 1',
               time: '2 pm - 4 pm',
               price: '$11',
-              imageUrl: 'https://picsum.photos/300/200?random=30'
+              imagename: "pottery.png",
+              // imageUrl: 'https://picsum.photos/300/200?random=30'
+            },
+            {
+              title: 'ESL Classes for Immigrants',
+              location: 'Easton Public Library, 515 Church St, Easton, PA 18042',
+              date: 'December 1',
+              time: '6 pm - 8 pm',
+              price: '$2',
+              imagename: "eslforimmigrants.jpg",
+              // imageUrl: 'https://picsum.photos/300/200?random=19'
             },
             {
               title: 'Free Food for Families at Weis Markets',
@@ -338,7 +367,8 @@
               date: 'December 2',
               time: '10 am - 3 pm',
               price: 'Free',
-              imageUrl: 'https://picsum.photos/300/200?random=11'
+              imagename: "weis.jpg",
+              // imageUrl: 'https://picsum.photos/300/200?random=11'
             },
             {
               title: 'Music for Mental Health - Live Performance',
@@ -346,7 +376,8 @@
               date: 'December 3',
               time: '7 pm - 9 pm',
               price: '$9',
-              imageUrl: 'https://picsum.photos/300/200?random=31'
+              imagename: "musicmental.jpg",
+              // imageUrl: 'https://picsum.photos/300/200?random=31'
             },
             {
               title: 'Free Parenting Classes & Support Group',
@@ -354,7 +385,8 @@
               date: 'December 5',
               time: '9 am - 12 pm',
               price: 'Free',
-              imageUrl: 'https://picsum.photos/300/200?random=21'
+              imagename: "parenting.webp",
+              // imageUrl: 'https://picsum.photos/300/200?random=21'
             },
             {
               title: 'Meditation Workshop for Beginners',
@@ -362,7 +394,8 @@
               date: 'December 8',
               time: '10 am - 11:30 am',
               price: '$6',
-              imageUrl: 'https://picsum.photos/300/200?random=32'
+              imagename: "meditation.webp",
+              // imageUrl: 'https://picsum.photos/300/200?random=32'
             },
             {
               title: 'Holiday Card Crafting for Kids',
@@ -370,7 +403,8 @@
               date: 'December 9',
               time: '4 pm - 5:30 pm',
               price: '$2',
-              imageUrl: 'https://picsum.photos/300/200?random=33'
+              imagename: "cardcrafting.jpg",
+              // imageUrl: 'https://picsum.photos/300/200?random=33'
             },
             {
               title: 'Free Food Distribution at Easton Hunger Coalition Pantry',
@@ -378,37 +412,236 @@
               date: 'December 10',
               time: '10 am - 2 pm',
               price: 'Free',
-              imageUrl: 'https://picsum.photos/300/200?random=5'
+              imagename: "freefood.jpg",
+              // imageUrl: 'https://picsum.photos/300/200?random=5'
             }
           ];
 
+        const eventsSPA = [
+            {
+              title: 'Inscripción en WIC - Mujeres, Infantes, Niños',
+              location: 'Giant Food Store #6255, 801 S 25th St, Easton, PA 18045',
+              date: 'Hoy',
+              time: '9 am - 4 pm',
+              price: 'Gratis',
+              imagename: "motherandbaby.jpg",
+            },
+            {
+              title: 'Distribución de Alimentos del Proyecto de Easton',
+              location: '330 Ferry St, Easton, PA 18042',
+              date: 'Hoy',
+              time: '10 am - 12:15 pm, 1 pm - 3:15 pm',
+              price: 'Gratis',
+              imagename: "FoodPantry_.jpg",
+            },
+            {
+              title: 'Exámenes de Salud Gratis en el Hospital St. Luke',
+              location: 'St. Luke\'s Hospital, Easton, PA',
+              date: 'Mañana',
+              time: '9 am - 1 pm',
+              price: 'Gratis',
+              imagename: "healthscreening.jpg",
+            },
+            {
+              title: 'Taller de Arte para Niños',
+              location: 'Easton Arts Center, 2001 Washington St, Easton, PA',
+              date: '22 de noviembre',
+              time: '10 am - 12 pm',
+              price: '$5',
+              imagename: "painting-workshop.webp",
+            },
+            {
+              title: 'Servicios Dentales en Centros de Salud del Barrio',
+              location: '1101 Northampton St, Easton, PA 18042',
+              date: '23 de noviembre',
+              time: '9 am - 5 pm',
+              price: '$8 (escala móvil)',
+              imagename: "dental.jpg",
+            },
+            {
+              title: 'Asistencia para la Recogida de Alimentos WIC',
+              location: 'Redner\'s Market #78, 3745 Nicholas St, Easton, PA 18045',
+              date: '25 de noviembre',
+              time: '10 am - 4 pm',
+              price: 'Gratis',
+              imagename: "grocerypickup.webp",
+            },
+            {
+              title: 'Noche de Película Comunitaria',
+              location: 'Easton Public Library, 515 Church St, Easton, PA 18042',
+              date: '25 de noviembre',
+              time: '6 pm - 8 pm',
+              price: '$3',
+              imagename: "movienight.jpg",
+            },
+            {
+              title: 'Clínica de Salud Infantil Gratis: Vacunas y Chequeos',
+              location: 'St. Luke’s Hospital, Easton, PA',
+              date: '28 de noviembre',
+              time: '9 am - 12 pm',
+              price: 'Gratis',
+              imagename: "vaccines.jpg",
+            },
+            {
+              title: 'Noche de Manualidades para Familias',
+              location: 'Easton Community Center, 901 Northampton St, Easton, PA',
+              date: '28 de noviembre',
+              time: '5 pm - 7 pm',
+              price: '$4 por familia',
+              imagename: "craftnight.jpg",
+            },
+            {
+              title: 'Clase de Yoga Comunitaria',
+              location: 'Easton Yoga Center, 119 N 3rd St, Easton, PA',
+              date: '29 de noviembre',
+              time: '8 am - 9 am',
+              price: '$10',
+              imagename: "yoga.jpg",
+            },
+            {
+              title: 'Capacitación Laboral Gratuita: Hojas de Vida y Entrevistas',
+              location: 'Star Community Health, 220 Ferry St, Easton, PA 18042',
+              date: '29 de noviembre',
+              time: '10 am - 1 pm',
+              price: 'Gratis',
+              imagename: "jobs.png",
+            },
+            {
+              title: 'Taller de Decoración de Galletas Navideñas',
+              location: 'Easton Baking Co., 1150 Northampton St, Easton, PA',
+              date: '29 de noviembre',
+              time: '3 pm - 5 pm',
+              price: '$12',
+              imagename: "cookie.webp",
+            },
+            {
+              title: 'Despensa de Alimentos Gratis en el Salvation Army',
+              location: 'Salvation Army, 1110 Northampton St, Easton, PA 18042',
+              date: '30 de noviembre',
+              time: '10 am - 12 pm',
+              price: 'Gratis',
+              imagename: "Food-pantry.jpg",
+            },
+            {
+              title: 'Taller de Ciencia para Niños',
+              location: 'Easton Science Center, 123 Main St, Easton, PA',
+              date: '30 de noviembre',
+              time: '10 am - 11:30 am',
+              price: '$7',
+              imagename: "scienceworkshop.jpg",
+            },
+            {
+              title: 'Búsqueda de Empleo y Asesoramiento Gratuitos',
+              location: '220 Ferry St, Easton, PA',
+              date: '30 de noviembre',
+              time: '10 am - 2 pm',
+              price: 'Gratis',
+              imagename: "getajob.webp",
+            },
+            {
+              title: 'Taller de Cerámica Comunitario',
+              location: 'Easton Art Studio, 200 Ferry St, Easton, PA',
+              date: '1 de diciembre',
+              time: '2 pm - 4 pm',
+              price: '$11',
+              imagename: "pottery.png",
+            },
+            {
+              title: 'Clases de ESL para Inmigrantes',
+              location: 'Easton Public Library, 515 Church St, Easton, PA 18042',
+              date: '1 de diciembre',
+              time: '6 pm - 8 pm',
+              price: '$2',
+              imagename: "eslforimmigrants.jpg",
+            },
+            {
+              title: 'Comida Gratis para Familias en Weis Markets',
+              location: 'Weis Markets #168, 3825 Sullivan Trl, Easton, PA 18040',
+              date: '2 de diciembre',
+              time: '10 am - 3 pm',
+              price: 'Gratis',
+              imagename: "weis.jpg",
+            },
+            {
+              title: 'Música para la Salud Mental - Presentación en Vivo',
+              location: 'Easton Community Center, 901 Northampton St, Easton, PA',
+              date: '3 de diciembre',
+              time: '7 pm - 9 pm',
+              price: '$9',
+              imagename: "musicmental.jpg",
+            },
+            {
+              title: 'Clases para Padres y Grupo de Apoyo Gratis',
+              location: 'Star Community Health, 220 Ferry St, Easton, PA 18042',
+              date: '5 de diciembre',
+              time: '9 am - 12 pm',
+              price: 'Gratis',
+              imagename: "parenting.webp",
+            },
+            {
+              title: 'Taller de Meditación para Principiantes',
+              location: 'Easton Wellness Center, 33 E 3rd St, Easton, PA',
+              date: '8 de diciembre',
+              time: '10 am - 11:30 am',
+              price: '$6',
+              imagename: "meditation.webp",
+            },
+            {
+              title: 'Taller de Tarjetas Navideñas para Niños',
+              location: 'Easton Library, 515 Church St, Easton, PA 18042',
+              date: '9 de diciembre',
+              time: '4 pm - 5:30 pm',
+              price: '$2',
+              imagename: "cardcrafting.jpg",
+            },
+            {
+              title: 'Distribución de Comida Gratis en Easton Hunger Coalition',
+              location: '1299 N 13th St, Easton, PA 18042',
+              date: '10 de diciembre',
+              time: '10 am - 2 pm',
+              price: 'Gratis',
+              imagename: "freefood.jpg",
+            }
+          ];
 
           
         
           // Function to render event cards dynamically
           function renderEventCards() {
-            const container = document.getElementById('eventsContainer');
-            container.innerHTML = ''; // Clear the container before adding new cards
-        
-            events.forEach(event => {
-              const cardHTML = `
-                  <div class="col">
-                    <div class="card h-100">
-                      <img src="${event.imageUrl}" class="card-img-top rounded" alt="${event.title}">
-                      <div class="card-body text-start"> <!-- Add 'text-start' here to left-align the text -->
-                        <h5 class="card-title">${event.title}</h5>
-                        <p class="card-text">
-                          <i class="bi bi-geo-alt"></i> ${event.location}<br>
-                          <i class="bi bi-calendar3"></i> ${event.date}<br>
-                          <i class="bi bi-clock"></i> ${event.time}<br>
-                          <i class="bi bi-currency-dollar"></i> <span class="text-success">${event.price}</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                `;
+            // Add event listeners to detect changes
+            document.querySelectorAll('input[name="language"]').forEach((radio) => {
+              radio.addEventListener('change', () => {
+                const language = getSelectedLanguage();
+                
+                const container = document.getElementById('eventsContainer');
+                container.innerHTML = ''; // Clear the container before adding new cards
+                const mediaPath = "/media/";
 
-              container.innerHTML += cardHTML; // Append each card to the container
+                // const language = getSelectedLanguage();
+                const events = (language === "english")? eventsENG : eventsSPA;
+                
+
+                events.forEach(event => {
+                  const cardHTML = `
+                      <div class="col">
+                        <div class="card h-100">
+                          <img src="${mediaPath + event.imagename}" class="card-img-top" alt="${event.title}">
+                          <div class="card-body text-start"> <!-- Add 'text-start' here to left-align the text -->
+                            <h5 class="card-title">${event.title}</h5>
+                            <p class="card-text">
+                              <i class="bi bi-geo-alt"></i> ${event.location}<br>
+                              <i class="bi bi-calendar3"></i> ${event.date}<br>
+                              <i class="bi bi-clock"></i> ${event.time}<br>
+                              <i class="bi bi-currency-dollar"></i> <span class="text-success">${event.price}</span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    `;
+
+                  container.innerHTML += cardHTML; // Append each card to the container
+                });
+              });
             });
           }
         
