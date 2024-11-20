@@ -176,10 +176,10 @@
             </div>
             <div class="col-6 d-flex justify-content-center align-items-center">
                 <div class="btn-group" role="group" aria-label="Language selection" style="background-color: white;">
-                    <input type="radio" class="btn-check" name="language" id="english" autocomplete="off" checked>
+                    <input type="radio" class="btn-check" name="language" id="english" value="english" autocomplete="off" checked>
                     <label class="btn select-button" for="english">English</label>
 
-                    <input type="radio" class="btn-check" name="language" id="spanish" autocomplete="off">
+                    <input type="radio" class="btn-check" name="language" id="spanish" value="spanish" autocomplete="off">
                     <label class="btn select-button" for="spanish">Spanish</label>
                 </div>
             </div>
@@ -199,12 +199,18 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
         
         <script>
-          // get the language selected
+          // // get the language selected
+          // function getSelectedLanguage() {
+          //   const selectedLanguage = document.querySelector('input[name="language"]:checked').id;
+          //   // console.log(`Selected language: ${selectedLanguage}`);
+          //   return selectedLanguage; // Returns "english" or "spanish"
+          // }
+          // Helper function to get the selected language
           function getSelectedLanguage() {
-            const selectedLanguage = document.querySelector('input[name="language"]:checked').id;
-            // console.log(`Selected language: ${selectedLanguage}`);
-            return selectedLanguage; // Returns "english" or "spanish"
+            const selectedRadio = document.querySelector('input[name="language"]:checked');
+            return selectedRadio ? selectedRadio.value : "english";
           }
+
 
           // List of events with attributes
           const eventsENG = [
@@ -608,45 +614,62 @@
         
           // Function to render event cards dynamically
           function renderEventCards() {
+            // let events = eventsENG; 
             // Add event listeners to detect changes
-            document.querySelectorAll('input[name="language"]').forEach((radio) => {
-              radio.addEventListener('change', () => {
-                const language = getSelectedLanguage();
-                
-                const container = document.getElementById('eventsContainer');
-                container.innerHTML = ''; // Clear the container before adding new cards
-                const mediaPath = "/media/";
+            
+            const container = document.getElementById('eventsContainer');
+            const mediaPath = "/static/";
 
-                // const language = getSelectedLanguage();
-                const events = (language === "english")? eventsENG : eventsSPA;
-                
+            // Get the selected language, default to English
+            const language = getSelectedLanguage() || "english";
+            console.log("myyyyyyyy  ", language)
+            const events = (language == "english") ? eventsENG : eventsSPA;
 
-                events.forEach(event => {
-                  const cardHTML = `
-                      <div class="col">
-                        <div class="card h-100">
-                          <img src="${mediaPath + event.imagename}" class="card-img-top" alt="${event.title}">
-                          <div class="card-body text-start"> <!-- Add 'text-start' here to left-align the text -->
-                            <h5 class="card-title">${event.title}</h5>
-                            <p class="card-text">
-                              <i class="bi bi-geo-alt"></i> ${event.location}<br>
-                              <i class="bi bi-calendar3"></i> ${event.date}<br>
-                              <i class="bi bi-clock"></i> ${event.time}<br>
-                              <i class="bi bi-currency-dollar"></i> <span class="text-success">${event.price}</span>
-                            </p>
-                          </div>
-                        </div>
+            // Clear the container before adding new cards
+            container.innerHTML = '';
+
+            events.forEach(event => {
+              const cardHTML = `
+                  <div class="col">
+                   
+                    <div class="card h-100">
+                      <img src="${mediaPath + event.imagename}" class="card-img-top" alt="${event.title}">
+                      <div class="card-body text-start"> <!-- Add 'text-start' here to left-align the text -->
+                        <h5 class="card-title">${event.title}</h5>
+                        <p class="card-text">
+                          <i class="bi bi-geo-alt"></i> ${event.location}<br>
+                          <i class="bi bi-calendar3"></i> ${event.date}<br>
+                          <i class="bi bi-clock"></i> ${event.time}<br>
+                           <span class="text-success">${event.price}</span>
+                        </p>
                       </div>
-                    `;
+                    </div>
+                  </div>
+                `;
 
-                  container.innerHTML += cardHTML; // Append each card to the container
-                });
-              });
+              container.innerHTML += cardHTML; // Append each card to the container
+            
             });
           }
         
           // Call the function to render the event cards
-          renderEventCards();
+          // renderEventCards();
+
+          // // Helper function to get the selected language
+          // function getSelectedLanguage() {
+          //   const selectedRadio = document.querySelector('input[name="language"]:checked');
+          //   return selectedRadio ? selectedRadio.value : "english";
+          // }
+
+          // Add event listeners to detect changes in language selection
+          document.querySelectorAll('input[name="language"]').forEach((radio) => {
+            radio.addEventListener('change', renderEventCards);
+          });
+
+          // Render the event cards on page load with default language
+          document.addEventListener('DOMContentLoaded', () => {
+            renderEventCards(); // Initial render
+          });
         </script>
     </div>
 </body>
