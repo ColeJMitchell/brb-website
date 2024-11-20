@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=forum,church,group" />
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <link ref="stylesheet" href = "style.js">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communities | Networks</title>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+        }
+        .container-fluid {
+            padding: 0;
+        }
+        .image-container {
+            position: relative;
+            width: 100px;
+            height: 88vh;
+        }
+        .overlay-head {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: yellow;
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: bold;
+            font-size: 13vw;
+            text-shadow: 
+                -3px -3px 0 black,
+                3px -3px 0 black,
+                -3px 3px 0 black,
+                3px 3px 0 black; 
+        }
+        .overlay-body {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: yellow;
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: bold;
+            font-size: 2vw; 
+            text-shadow: 
+                -3px -3px 0 black,
+                3px -3px 0 black,
+                -3px 3px 0 black,
+                3px 3px 0 black; 
+        }
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .custom-button {
+            color: yellow;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.2vw;
+            outline: none;
+            border: none;
+        }
+
+        .custom-button:hover,
+        .custom-button:focus,
+        .custom-button:active {
+            color: yellow !important;
+            background-color: transparent; 
+            border-color: transparent; 
+            box-shadow: none; 
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+
+        .button{
+            display:inline-flex;
+            align-items: center;
+            gap: 6px;
+            outline:none;
+            border-radius: 100px;
+        }
+
+        .button2 {
+            margin-right: 10px; /* Adds 10px space to the right of the button */
+        }
+
+        #square{
+            width: 250 px;
+            height: 250 px;
+            background-color: seagreen;
+        }
+
+
+        @media (max-width: 768px) {
+            .overlay-head {
+                font-size: 15vw;
+            }
+            .overlay-body {
+                font-size: 4vw;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .overlay-head {
+                font-size: 20vw;
+            }
+            .overlay-body {
+                font-size: 6vw;
+            }
+        }
+
+         /* Additional styling for content layout */
+         .content-container, .filter-container {
+            padding: 20px;
+        }
+
+        .communities-header{
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: black;
+        }
+
+        .networks-card {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .networks-links, .in-person-help {
+            font-size: 1rem;
+        }
+
+        .image-container {
+            position: relative;   /* anything other than the default static */
+            height: 160px;        /* make the parent dictate the height */
+        }
+
+        .image-container img {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;  /* or use: contain; to make the entire image visible */
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            pointer-events: none;  /* Prevent mouse actions */
+        }
+
+        .image-container img.is-active {
+            opacity: 1;
+            pointer-events: auto;  /* Allow mouse actions */
+        }
+        /* translate button */
+        .tbutton {
+            padding: 0px;
+            font-size: 10px;
+            width: 50px;
+            height: 50px;
+            margin: 0px;
+            cursor: pointer;
+        }
+
+        /* Ensure iframe styles are included to avoid default sizing */
+        #google_translate_element {
+            width: 50 !important; /* or specify a fixed width */
+            max-width: 50px; /* Set a max-width to control size */
+        }
+        /* Style to control the drop-down select height and font size */
+        .goog-te-gadget-simple select {
+            height: 30px !important; /* Adjust height */
+            font-size: 10px !important; /* Control font size */
+        }
+
+        * Reduce padding for the select element */
+        .goog-te-menu2 {
+            padding: 0px !important; /* Adjust padding */
+        }
+        /* Further adjust individual menu items */
+        .goog-te-menu2-item {
+            padding: 0px !important; /* Control padding of item */
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        
+        <div class="row d-flex justify-content-around" style="background-color: black; height: 10vh;">
+             <!-- black header bar -->
+            <div class="col d-flex justify-content-center align-items-center position-relative">
+                <form method="post" action="{% url 'home' %}">
+                    {% csrf_token %} <!-- link to homepage-->
+                <button class = "btn custom-button" type = "submit">Home</btn>
+                </form>
+            </div> 
+
+            <div class="col d-flex justify-content-center align-items-center position-relative">
+                <form method="post" action="{% url 'schools' %}">
+                    {% csrf_token %} <!-- link to schools page -->
+                <button class = "btn custom-button " type = "submit">Schools</btn>
+                </form>
+            </div> 
+
+            <div class="col d-flex justify-content-center align-items-center position-relative">
+                <form method="post" action="{% url 'healthcare' %}">
+                    {% csrf_token %} <!-- link to healthcare-->
+                <button class = "btn custom-button" type = "submit">Healthcare</btn>
+                </form>
+            </div>  
+
+            <div class="col d-flex justify-content-center align-items-center position-relative">
+                <form method="post" action="{% url 'food' %}">
+                    {% csrf_token %} <!-- link to food page-->
+                <button class = "btn custom-button" type = "submit">Food</btn>
+                </form>
+            </div> 
+
+
+            <div class="col d-flex justify-content-center align-items-center position-relative" style="background-color: green;">
+                <btn class="custom-button">Communities</h1>
+                </div> 
+
+            <div class="col d-flex justify-content-center align-items-center position-relative">
+                <form method="post" action="{% url 'events' %}">
+                    {% csrf_token %} <!-- link to events page-->
+                <button class = "btn custom-button" type = "submit" >Events</btn>
+                </form>
+            </div>
+
+            <div class="col d-flex justify-content-center align-items-center position-relative">
+                <form method="post" action="{% url 'aboutus' %}">
+                    {% csrf_token %} <!-- link to about us page -->
+                <button class = "btn custom-button" type = "submit">About Us</btn>
+                </form>
+            </div>
+
+        </div>
+         <!-- yellow bar -->
+        <div class="row d-flex justify-content-around" style="background-color: yellow; height: 5vh;">
+            <div class="col-6 d-flex justify-content-center align-items-center">
+                 <!-- search bar -->
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn" style="background-color: black; color: white;" type="submit">Search</button>
+                </form>
+            </div>
+            <div class="col-6 d-flex justify-content-center align-items-center">
+                 <!-- language button -->
+                <div class="btn-group" role="group" aria-label="Language selection" style="background-color: white;">
+                    <button class="tbutton" id="translateButton">Translate</button>
+                    <div id="google_translate_element"></div> <!-- Translation tool will be inserted here -->
+                    <script type="text/javascript">
+                        function googleTranslateElementInit() {
+                            new google.translate.TranslateElement({
+                                pageLanguage: 'en', 
+                                includedLanguages: 'es,en',
+                                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                                autoDisplay: false
+                            }, 'google_translate_element');
+                        }
+                     // Load the Google Translate API
+                        (function() {
+                            var gt = document.createElement('script'); 
+                            gt.type = 'text/javascript'; 
+                            gt.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"; 
+                            document.body.appendChild(gt);
+                        })();
+                    // Function to execute translation
+                    document.getElementById('translateButton').onclick = function() {
+                        var frame = document.querySelector('iframe'); 
+                        if (frame) {
+                            frame.contentWindow.document.querySelector('select').value = 'es'; // Set language to Spanish
+                            frame.contentWindow.document.querySelector('select').dispatchEvent(new Event('change')); // Trigger the change event
+                            }
+                    };
+                    
+
+                    document.addEventListener('DOMContentLoaded', function() {
+                    // JavaScript executed after the DOM is fully loaded
+                        var translateSelect = document.querySelector('#google_translate_element select');
+                        if (translateSelect) {
+                            translateSelect.style.height = '30px'; // Adjust height
+                            translateSelect.style.fontSize = '10px'; // Control font size
+                            }
+                    });
+
+                    if (!frame) {
+                        console.error("Translation frame not found.");
+                        alert("Translation is not available at the moment.");
+                    }
+                    $(document).ready(function() {
+                        $('#google_translate_element select').css({
+                            'height': '30px',
+                            'font-size': '10px',
+                            'max-width': '50px'
+                        });
+                    });
+                    </script>
+                    
+                <br>
+                <br>
+                <br>
+                </div>
+            </div>
+
+        <div class = "container comms-containter">
+            <div class = "row"></div>
+                <!-- hyperlink buttons-->
+                <div class='myDiv'>
+                    <button style='margin-right:32px'>Churches</button>
+                    <button style='margin-left:32px'>Networks</button>
+                    <button style='margin-left:68px'>Forums</button>
+                </div>
+            </div>
+            <div class="row">
+                <h3>Here is a list of Easton networks to connect with</h3>
+                <div class="col-md-7 communities align-items-center position-relative">
+                    <div class="networks-card"> <!--networks list -->
+                        <strong>Name:</strong> <a href="https://promiseneighborhoodslv.org/" target =_blank >Allentown Promise Neighborhood</a><br>
+                        <p>Promise Neighborhoods of the Lehigh Valley works to ensure that children have the resources and support they need to succeed, from cradle to career in Lehigh Valley, Pennsylvania.</p>
+                        <strong>Contact:</strong> (610) 351-4288<br>
+                        <strong>Address:</strong> 333 W Union Street, Allentown PA 18102<br>
+                        <strong>Groups:</strong> For all ages<br>
+                        <strong>Programs:</strong> 
+                        <a href="https://promiseneighborhoodslv.org/health-equity" target =_blank >Health Equity</a> and  
+                        <a href="https://promiseneighborhoodslv.org/community-wellness" target =_blank >Community Wellness</a><br>
+                    </div>
+                    <div class="networks-card">
+                        <strong>Name:</strong> <a href="https://www.copsnkidslv.org/" target =_blank>Cops N' Kids</a><br>
+                        <p>The vision of the organization is to demonstrate to our children the commitment of our community by organizing memorable literacy events throughout the Lehigh Valley. For volunteers, these events present an opportunity to interact with and read to the children; for the children, they present an opportunity to take home a book of their very own while interacting with members of the community; for the community, they present an opportunity to enrich the lives of our children.</p>
+                        <strong>Contact:</strong> <a href="mailto:lvcops-n-kids@att.net" target =_blank title = "This will send an email to Beverly Bradley">Beverly Bradley</a><br>
+                        <strong>Address:</strong> 511 E 3rd St, Bethlehem, PA 18015<br>
+                        <strong>Groups:</strong> For all ages<br>
+                        <strong>Programs:</strong> Children’s Literacy Program and Reading Room<br>
+                    </div>
+                    <div class="networks-card">
+                        <strong>Name:</strong> <a href="https://mfhs.org/" target =_blank title =  >Easton WIC Clinic</a><br>
+                        <p>Founded in 1971, MFHS meets the ever-changing needs of women, children, and families by providing essential and innovative programming that improves the quality of life for women, children, and families. Today, we oversee and support a network of health and nutrition centers in 17 Pennsylvania counties, serving over 90,000 women, men, and children annually through our core programs:</p>
+                        <strong>Contact:</strong> (610) 989-2899<br>
+                        <strong>Address:</strong> 101 LARRY HOLMES DR EASTON, PA 18042-7720<br>
+                        <strong>Groups:</strong> Pregnant Women, New Mothers, Children Under 5<br>
+                        <strong>Income:</strong> Family of 4: $49,025, Family of 3 $40,626, Family of 2 $32,222<br>
+                    </div>
+                   
+                </div>
+                <!-- filter half-->
+                <div class = "col-md-4 filter align-items-center position-relative">
+                    <div class="filter-container" id="filter" style="height: 400px;">
+                        <!--<label for="groups">Choose an identity:</label>
+                        <select name="groups" id="groups">
+                        <optgroup label="Motherhood">
+                            <option value="New Mother">New Mother</option>
+                            <option value="Pregnant Women">Pregnant Women</option>
+                        </optgroup>
+                        <optgroup label="Family">
+                            <option value="Children Under 6">Children under 6</option>
+                            <option value="Grandparents">Grandparents</option>
+                            <option value="Bilingual">Bilingual</option>
+                        </optgroup>
+                        </select>-->
+
+                        <div id="image-container">
+                            <img src="PNLV2.png" style="max-width: 100%; max-height: 100%;" alt="Children and Lady Standing on stairs">
+                            <img src="PNLV.png" style="max-width: 100%; max-height: 100%;" alt="Man Holding Baby">
+                            <img src="CNK.png" style="max-width: 100%; max-height: 100%;" alt="Reading Room">
+                        </div>
+                          <script src="script.js"></script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
