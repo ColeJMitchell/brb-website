@@ -4,13 +4,28 @@
     box-sizing: border-box;
 }
 footer{
-    background-color: #FFCCA6;
+    background-color: green;
 }
 /*creates footer area */
 .footerContainer{ 
+    position:fixed;bottom:0;
     width: 100%;
     padding: 70px 30px 20px ;
+    display:block
 }
+.button {
+    display: flex;
+  }
+.dropdown * {
+    box-sizing: border-box;
+}
+.select{
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.select
 /*centers icons */
 .socialIcons{
     display: flex;
@@ -20,7 +35,7 @@ footer{
 .socialIcons a{
     text-decoration: none;
     padding:  10px;
-    background-color: rgb(152, 91, 16);
+    background-color: yellow;
     margin: 10px;
     border-radius: 50%;
 }
@@ -47,7 +62,7 @@ footer{
     list-style-type: none;
 }
 .footerNav ul li a{
-    color:rgb(152, 91, 16);
+    color:black;
     margin: 20px;
     text-decoration: none;
     font-size: 1.3em;
@@ -91,6 +106,19 @@ footer{
     margin-right: auto;
     width: 50%;
   }
+
+  #image-container img {
+    position: absolute;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  #image-container img:not(:first-child) {
+    opacity: 0;
+    display: none;
+  }
+
+  
+ 
 @media (max-width: 700px){
     .footerNav ul{
         flex-direction: column;
