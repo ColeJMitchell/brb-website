@@ -32,7 +32,7 @@
             top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: yellow;
+            color: #ffe800;
             font-family: 'Bebas Neue', sans-serif;
             font-weight: bold;
             font-size: 13vw;
@@ -47,7 +47,7 @@
             top: 60%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: yellow;
+            color: #ffe800;
             font-family: 'Bebas Neue', sans-serif;
             font-weight: bold;
             font-size: 2vw; 
@@ -66,7 +66,7 @@
         }
 
         .custom-button {
-            color: yellow;
+            color: #ffe800;
             font-family: 'Bebas Neue', sans-serif;
             font-size: 2.2vw;
             outline: none;
@@ -76,7 +76,7 @@
         .custom-button:hover,
         .custom-button:focus,
         .custom-button:active {
-            color: yellow !important;
+            color:  #ffe800 !important;
             background-color: transparent; 
             border-color: transparent; 
             box-shadow: none; 
@@ -105,7 +105,7 @@
         #square{
             width: 250 px;
             height: 250 px;
-            background-color: seagreen;
+            background-color: #6b4701; /* i do not know what this is*/
         }
 
 
@@ -203,12 +203,123 @@
         .goog-te-menu2-item {
             padding: 0px !important; /* Control padding of item */
         }
+
+        *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+footer{
+    background-color: #fcd615; /* main background color*/
+}
+/*creates footer area */
+.footerContainer{ 
+    position:fixed;bottom:0;
+    width: 100%;
+    padding: 70px 30px 20px ;
+    display:block
+}
+.button {
+    display: flex;
+  }
+.dropdown * {
+    box-sizing: border-box;
+}
+.select{
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.select
+
+.footerNav{
+    margin: 30px 0;
+}
+.footerNav ul{
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+.footerNav ul li a{
+    color:black;
+    margin: 20px;
+    text-decoration: none;
+    font-size: 1.3em;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+.footerNav ul li a:hover{
+    opacity: 1;
+}
+.footerBottom{
+    background-color: #ffe800; /*copy right banner */ 
+    padding: 20px;
+    text-align: center;
+}
+.footerBottom p{
+    color: rgb(152, 91, 16); /*copy right lettering */ 
+}
+.designer{
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin: 0px 5px;
+}
+.column {
+    float: left;
+    width: 50%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  #image-container img {
+    position: absolute;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  #image-container img:not(:first-child) {
+    opacity: 0;
+    display: none;
+  }
+
+  
+  
+ 
+@media (max-width: 700px){
+    .footerNav ul{
+        flex-direction: column;
+    } 
+    .footerNav ul li{
+        width:100%;
+        text-align: center;
+        margin: 10px;
+    }
+    .socialIcons a{
+        padding: 8px;
+        margin: 4px;
+    }
+}
+
     </style>
 </head>
 <body>
     <div class="container-fluid">
          <!-- black header bar -->
-        <div class="row d-flex justify-content-around" style="background-color: black; height: 10vh;">
+        <div class="row d-flex justify-content-around" style="background-color: #23212c; height: 10vh;">
             <div class="col d-flex justify-content-center align-items-center position-relative">
                 <form method="post" action="{% url 'home' %}"> <!-- link to homepage-->
                 <button class = "btn custom-button" type = "submit">Home</btn>
@@ -234,7 +345,7 @@
             </div> 
 
 
-            <div class="col d-flex justify-content-center align-items-center position-relative" style="background-color: green;">
+            <div class="col d-flex justify-content-center align-items-center position-relative" style="background-color: #3a3637;"> <!-- tabbed color-->
                 <btn class="custom-button">Communities</h1>
                 </div> 
 
@@ -252,17 +363,17 @@
 
         </div>
          <!-- yellow bar -->
-        <div class="row d-flex justify-content-around" style="background-color: yellow; height: 5vh;">
+        <div class="row d-flex justify-content-around" style="background-color: #ffe800; height: 7vh;">
             <div class="col-6 d-flex justify-content-center align-items-center">
                  <!-- search bar -->
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn" style="background-color: black; color: white;" type="submit">Search</button>
+                    <button class="btn" style="background-color: #23212c; color: #ffffff;" type="submit">Search</button>
                 </form>
             </div>
             <div class="col-6 d-flex justify-content-center align-items-center">
                  <!-- language button -->
-                <div class="btn-group" role="group" aria-label="Language selection" style="background-color: yellow; height:30px;">
+                <div class="btn-group" role="group" aria-label="Language selection" style="background-color:  #ffe800; height:30px;">
                     
                     <div id="google_translate_element" width = 30px height = 30px></div> <!-- Translation tool will be inserted here -->
                     <script type="text/javascript">
@@ -323,21 +434,23 @@
             </div>
         </div>    
 
-        <div class = "container comms-containter">
-            <div class = "row"></div>
+        <div class = "container comms-containter"> <!-- heading + buttons-->
+            <div class = "row">
+                &nbsp;
+                &nbsp;
+                &nbsp;
                 <!-- hyperlink buttons-->
-                <div class='myDiv'>
-                    <h3>Select one of the following categories: </h3>
+                <div class='myDiv'style = "display: flex; flex-direction: row; align-items: center; justify-content: center;">
+                    <h3>Select one of the following categories:    </h3>
                     <a href="http://127.0.0.1:3002/communities_networks#">
-                        <button style='margin-right:32px'>Networks</button>
+                        <button style='margin-right:32px; padding: 15px 30px; font-size: 16px;'>Networks</button>
                     </a>
                     <a href="http://127.0.0.1:3002/communities_churches">
-                        <button style='margin-right:32px'>Churches</button>
+                        <button style='margin-right:32px; padding: 15px 30px; font-size: 16px;'>Churches</button>
                     </a>
                     <a href="http://127.0.0.1:3002/communities_forums">
-                        <button style='margin-right:32px'>Forums</button>
+                        <button style='margin-right:32px; padding: 15px 30px; font-size: 16px;'>Forums</button>
                     </a>
-
                 </div>
             </div>
             <div class="row">
@@ -399,11 +512,42 @@
                         </select>-->
 
                         <div id="image-container">
-                            <img src="PNLV2.png" style="max-width: 100%; max-height: 100%;" alt="Children and Lady Standing on stairs">
-                            <img src="PNLV.png" style="max-width: 100%; max-height: 100%;" alt="Man Holding Baby">
-                            <img src="CNK.png" style="max-width: 100%; max-height: 100%;" alt="Reading Room">
+                            <img src="PNLV2.png" style="max-width: 100%; max-height: 100%;" height = 400px alt="Children and Lady Standing on stairs">
+                            <img src="PNLV.png" style="max-width: 100%; max-height: 100%;" height = 400px alt="Man Holding Baby">
+                            <img src="CNK.png" style="max-width: 100%; max-height: 100%;" height = 400px alt="Reading Room">
                         </div>
-                          <script src="script.js"></script>
+                        <script>
+                            const fadeImages = (elContainer) => {
+
+                            const duration = 3000;
+                            const elsSlides = elContainer.children;
+                            const tot = elsSlides.length;
+                            let idx = 0;
+                            let itv = null;
+    
+                            const hide = () => elsSlides[idx].classList.remove("is-active");
+                            const show = () => elsSlides[idx].classList.add("is-active"); 
+                            const anim = () => {
+                                hide();
+                                idx = (idx + 1) % tot;
+                                show();
+                            };
+                            const play = () => itv = setInterval(anim, duration);
+                            const stop = () => clearInterval(itv);
+    
+                            // Start!
+                            elContainer.addEventListener("pointerenter", stop);
+                            show();
+                            play();
+                            }
+  
+                            // Init!
+                            document.querySelectorAll(".image-container").forEach(fadeImages);
+
+                            function pageChangeClick(x){
+                                document.getElementById("paragraph").style.color = 'red';
+                            }
+                        </script>
                     </div>
                 </div>
             </div>
@@ -417,29 +561,15 @@
     &nbsp;
 </body>
 <footer>
-    <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-        <meta name = "viewport" content="width=device-width,initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <!--uploads icons from web-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <div class="footer">
         <div class="row">
-            <div class="column"> <!--logo + icon-->
+            <div class="column"> <!--logo-->
                 <img src = "Bee Ready Logo.png" alt = "Bee Ready Logo" width="600" class="center"></image>
-                <!--icons-->
-                <div class ="socialIcons">
-                    <a href=""><i class = "fa-brands fa-facebook"></i></a>
-                    <a href=""><i class = "fa-brands fa-instagram"></i></a>
-                    <a href=""><i class = "fa-brands fa-twitter"></i></a>
-                    <a href=""><i class = "fa-brands fa-youtube"></i></a>
-                    <a href=""><i class = "fa-brands fa-google-plus"></i></a>
-                </div>
             </div>
             <div class="column"> <!--about us summary-->
-                <div class = "inBrown">
-                    <h1>About Us</h1> 
+                <div class = "inBlack">
+                    <h1>About Us:</h1> 
+                    <br>
                     <p> We are committed to bringing free family-child learning support to economically disadvantaged families who have little or no access to early learning opportunities. Our approach is learner-
                             centered, teacher-guided and community supported. Working in partnership with families, we
                             can build confidence in the family’s role as first teacher by providing support and education on
