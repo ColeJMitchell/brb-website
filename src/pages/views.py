@@ -11,9 +11,17 @@ def spanish_home(request):
         return render(request, "spanish_home.html")
     return render(request, 'spanish_home.html')
 
-def communities(request):
+def communities_networks(request):
     if request.method == "POST":
-        return render(request, "communities.html")
+        return render(request, "communities_networks.html")
+
+def communities_churches(request):
+    if request.method == "POST":
+        return render(request, "communities_churches.html")
+
+def communities_forums(request):
+    if request.method == "POST":
+        return render(request, "communities_forums.html")
     
 def aboutus(request):
     if request.method == "POST":
