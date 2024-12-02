@@ -9,28 +9,116 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
         <style>
-            .inBrown { color: rgb(152, 91, 16);; }
-          </style>
-        <title> Bee Ready Footer</title>
+            .inBlack {
+                
+                border: 2px #23212c; /* Set the border width and color */
+                padding: 15px; /* Add padding inside the border */
+                margin: 10px 0; /* Add spacing around the box */
+                background-color: #f49c60; /* Optional: Set a light background for contrast */
+                border-radius: 5px; /* Optional: Rounded corners */
+                }
+
+            /*creates footer area */
+            footer{
+                font-family: 'Bebas Neue', sans-serif;
+                background-color: #fcd615; /* main background color*/
+                padding: 20px;
+                position: relative; 
+            }
+            .footerContainer{ 
+                position:fixed;bottom:0;
+                width: 100%;
+                padding: 70px 30px 20px ;
+                display:block
+            }
+            .button {
+                display: flex;
+            }
+            .dropdown * {
+                box-sizing: border-box;
+            }
+            .select{
+                background: #fff;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .select
+            .footerNav{
+                margin: 30px 0;
+            }
+            .footerNav ul{
+                display: flex;
+                justify-content: center;
+                list-style-type: none;
+            }
+            .footerNav ul li a{
+                color:black;
+                margin: 20px;
+                text-decoration: none;
+                font-size: 1.3em;
+                opacity: 0.7;
+                transition: 0.5s;
+            }
+            .footerNav ul li a:hover{
+                opacity: 1;
+            }
+            .footerBottom{
+                background-color: #ffe800; /*copy right banner */ 
+                padding: 20px;
+                text-align: center;
+            }
+            .footerBottom p{
+                color: rgb(152, 91, 16); /*copy right lettering */ 
+            }
+            .designer{
+                opacity: 0.7;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-weight: 400;
+                margin: 0px 5px;
+            }
+            .column {
+                float: left;
+                width: 50%;
+            }
+            
+            /* Clear floats after the columns */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            .center {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 50%;
+            }
+            @media (max-width: 700px){
+                .footerNav ul{
+                    flex-direction: column;
+                } 
+                .footerNav ul li{
+                    width:100%;
+                    text-align: center;
+                    margin: 10px;
+                }
+            }
+        </style>
+        <title> Bee Ready</title>
     </head>
     <body>
+        
         <footer>
             <div class="footer">
                 <div class="row">
-                    <div class="column"> <!--logo + icon-->
+                    <div class="column"> <!--logo-->
                         <img src = "Bee Ready Logo.png" alt = "Bee Ready Logo" width="600" class="center"></image>
-                        <!--icons-->
-                        <div class ="socialIcons">
-                            <a href=""><i class = "fa-brands fa-facebook"></i></a>
-                            <a href=""><i class = "fa-brands fa-instagram"></i></a>
-                            <a href=""><i class = "fa-brands fa-twitter"></i></a>
-                            <a href=""><i class = "fa-brands fa-youtube"></i></a>
-                            <a href=""><i class = "fa-brands fa-google-plus"></i></a>
-                        </div>
                     </div>
                     <div class="column"> <!--about us summary-->
-                        <div class = "inBrown">
-                            <h1>About Us</h1> 
+                        <div class = "inBlack">
+                            <h1>About Us:</h1> 
                             <p> We are committed to bringing free family-child learning support to economically disadvantaged families who have little or no access to early learning opportunities. Our approach is learner-
                                     centered, teacher-guided and community supported. Working in partnership with families, we
                                     can build confidence in the family’s role as first teacher by providing support and education on
@@ -44,7 +132,7 @@
                         <div class = "footerNav">
                          <ul>
                             <li><a href="">Contact Us:</a></li>
-                            <li><a href="">Email</a></li>
+                            <li><a href="mailto:beeready4kindergarten@gmail.com">Email</a></li>
                             <li><a href="">Phone Number</a></li>
                             <li><a href="">Address</a></li>
                             <li><a href="https://eastonsd.org/m/events/show_event.jsp?REC_ID=2208376&id=0">Meetings</a></li>
