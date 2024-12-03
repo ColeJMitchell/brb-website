@@ -383,13 +383,14 @@
                 <!-- photo wall half-->
                 <div class = "col-md-4 photo align-items-center position-relative">
                     <div id="image-container">
-                        <img src="PNLV2.png" style="max-width: 100%; max-height: 100%;" height = 400px alt="Children and Lady Standing on stairs">
-                        <img src="PNLV.png" style="max-width: 100%; max-height: 100%;" height = 400px alt="Man Holding Baby">
-                        <img src="CNK.png" style="max-width: 100%; max-height: 100%;" height = 400px alt="Reading Room">
-                        <img src="LVCC.png" style="max-width: 100%; max-height: 100%;" height = 400px alt="Two Babies Smiling">
-                        <img src="KF.png" style="max-width: 100%; max-height: 100%;" height = 400px alt="Children Smiling at Table">
-                        <img src="APN.png" style="max-width: 100%; max-height: 100%;" height = 400px alt="Girls Basketball Team">
-                        <img src="LVCC2.png" style="max-width: 100%; max-height: 100%;" height = 400px alt="Toddler Playroom">
+                        {% load static%}
+                        <img src="{% static PNLV2.png%}" style="max-width: 100%; max-height: 100%;" height = 400px alt="Children and Lady Standing on stairs">
+                        <img src="{% static PNLV.png%}" style="max-width: 100%; max-height: 100%;" height = 400px alt="Man Holding Baby">
+                        <img src="{% static CNK.png%}" style="max-width: 100%; max-height: 100%;" height = 400px alt="Reading Room">
+                        <img src="{% static LVCC.png%}" style="max-width: 100%; max-height: 100%;" height = 400px alt="Two Babies Smiling">
+                        <img src="{% static KF.png%}" style="max-width: 100%; max-height: 100%;" height = 400px alt="Children Smiling at Table">
+                        <img src="{% static APN.png%}" style="max-width: 100%; max-height: 100%;" height = 400px alt="Girls Basketball Team">
+                        <img src="{% static LVCC2.png%}" style="max-width: 100%; max-height: 100%;" height = 400px alt="Toddler Playroom">
                     </div>
                 </div>
             </div>
