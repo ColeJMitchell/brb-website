@@ -11,47 +11,29 @@
         body {
             margin: 0;
             padding: 0;
-            overflow: auto;
+            overflow: scroll;
         }
+
+        .left-side, .right-side {
+            overflow-y: auto; /* Allow vertical scrolling */
+            height: 100vh; /* Full height for independent scrolling */
+        }
+
+        .left-side {
+            flex: 1; /* Take one part of the flex container */
+            padding: 10px; /* Add padding for content */
+        }
+
+        .right-side {
+            flex: 1; /* Take one part of the flex container */
+            padding: 10px;
+        }
+        
         .container-fluid {
             padding: 0;
+            background-color: #f8f9fa;
         }
-        .image-container {
-            position: relative;
-            width: 100%;
-            height: 88vh;
-        }
-        .overlay-head {
-            position: absolute;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: yellow;
-            font-family: 'Bebas Neue', sans-serif;
-            font-weight: bold;
-            font-size: 13vw;
-            text-shadow: 
-                -3px -3px 0 black,
-                3px -3px 0 black,
-                -3px 3px 0 black,
-                3px 3px 0 black; 
         
-        }
-        .overlay-body {
-            position: absolute;
-            top: 60%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: yellow;
-            font-family: 'Bebas Neue', sans-serif;
-            font-weight: bold;
-            font-size: 2vw; 
-            text-shadow: 
-                -3px -3px 0 black,
-                3px -3px 0 black,
-                -3px 3px 0 black,
-                3px 3px 0 black; 
-        }
         img {
             display: block;
             width: 100%;
@@ -61,7 +43,7 @@
         }
 
         .custom-button {
-            color: yellow;
+            color: #ffe800;
             font-family: 'Bebas Neue', sans-serif;
             font-size: 2.2vw;
             outline: none;
@@ -71,7 +53,7 @@
         .custom-button:hover,
         .custom-button:focus,
         .custom-button:active {
-            color: yellow !important;
+            color: #ffe800 !important;
             background-color: transparent; 
             border-color: transparent; 
             box-shadow: none; 
@@ -96,11 +78,17 @@
         }
 
         .content-container {
-            padding: 20px;
+            padding: 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            display: flex;
+            height: 100vh; /* Full viewport height */
+            overflow: hidden; /* Prevent content overflow */
+            background-color: #f8f9fa;
         }
 
         .resource-section, .partners, .map {
-            margin-top: 20px;
+            width: 100%;
         }
 
         .resource-header, .partners-header {
@@ -110,8 +98,9 @@
         }
 
         .resource-card {
-            background-color: #f8f9fa;
+            background-color: #ffffff;
             border: 1px solid #ddd;
+            width: 100%;
             padding: 10px;
             border-radius: 5px;
             margin-bottom: 10px;
@@ -131,7 +120,7 @@
 </head>
 <body>
     <div class="container-fluid">
-        <div class="row d-flex justify-content-around" style="background-color: black; height: 10vh;">
+        <div class="row d-flex justify-content-around" style="background-color: #23212c; height: 10vh;">
 
             <div class="col d-flex justify-content-center align-items-center position-relative">
                 <form method="post" action="{% url 'home' %}">
@@ -154,12 +143,12 @@
                 </form>
             </div>  
 
-            <div class="col d-flex justify-content-center align-items-center position-relative" style="background-color: green;">
+            <div class="col d-flex justify-content-center align-items-center position-relative" style="background-color: #3a3637;">
                 <btn class="custom-button">Food</h1>
                 </div> 
 
             <div class="col d-flex justify-content-center align-items-center position-relative">
-                <form method="post" action="{% url 'communities' %}">
+                <form method="post" action="{% url 'communities_networks' %}">
                     {% csrf_token %}
                 <button class = "btn custom-button" type = "submit" >Communities</btn>
                 </form>
@@ -181,12 +170,8 @@
 
         </div>
        
-        <div class="row d-flex justify-content-around" style="background-color: yellow; height: 5vh;">
+        <div class="row d-flex justify-content-around" style="background-color: #ffe800; height: 7vh;">
             <div class="col-6 d-flex justify-content-center align-items-center">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn" style="background-color: black; color: white;" type="submit">Search</button>
-                </form>
             </div>
             <div class="col-6 d-flex justify-content-center align-items-center">
                 <div class="btn-group" role="group" aria-label="Language selection" style="background-color: white;">
@@ -201,67 +186,115 @@
 
         <!-- Main Content Layout -->
         <div class="container content-container">
-            <div class="row">
-                <!-- Food Resources Section -->
-                <div class="col-md-6">
-                    <!-- Food Drives -->
-                    <div class="resource-section">
-                        <div class="resource-header">Food Drives</div>
-                        <div class="resource-card">Food Drive 1</div>
-                        <div class="resource-card">Food Drive 2</div>
-                        <!-- Add more food drives as needed -->
-                    </div>
+            <!-- Left Section: Food Resources -->
+            <div class="left-side">
+                    <!-- Food Resources Section -->
+                        <!-- Food Banks -->
+                        <div class="resource-section">
+                            <div class="resource-header">Food Banks</div>
+                            <div class="resource-card">
+                                <h5><strong>Project of Easton Food Pantry</strong></h5>
+                                <strong>Address: </strong><a href="https://maps.app.goo.gl/FFYzLgwU2nkGVxx1A">330 Ferry Street, Easton, PA 18042</a>
+                                <br>The Food Pantry is open to the public on: Mondays from 10am-12:15pm, Thursdays from 10am-12:15pm & 1pm-3:15pm.
+                                <br>Bring Photo ID and proof of Northampton County residency.
+                                <br>Learning opportunities to help with food preparation, integrating more fruits and veggies into their diet, and accommodating allergies.
+                                <br>                        
+                            </div>
+                            <div class="resource-card">
+                                <h5><strong>Easton Hunger Coalition</strong></h5>
+                                Many different times to be found here: 
+                                <a href="https://www.eastonsd.org/pdfs/EHCMealCenterandPantryFlyer12_15TrifoldNewLogo.pdf">Easton Area Pantry Information - Easton Hunger Coalition</a>
+                                <br> 
+                            </div>
+                            <!-- Add more food drives as needed -->
+                        </div>
+    
+                        <!-- Grocery with WIC -->
+                        <div class="resource-section">
+                            <div class="resource-header">Grocery with WIC</div>
+                            WIC (Women. Infants. Children.) works to prevent and improve nutrition-related 
+                            health problems by offering healthy supplemental foods, nutrition services, 
+                            breastfeeding support and referrals to eligible women, infants, and children under age 5.
+                            Get Started Online! <a href="https://www.pa.gov/en/agencies/health/programs/maternal-health-and-infant-care/wic.html">
+                            Pennsylvania WIC (pa.gov)</a><br><br>
+                            <div class="resource-card">
+                                <h5><strong>Express Mini Market</strong></h5>
+                                <strong>Address: </strong><a href="https://maps.app.goo.gl/LsZNDBgzsQ8qDPVJ7">1041 Butler St, Easton, PA 18042</a><br>
+                            </div>
+                            <div class="resource-card">
+                                <h5><strong>Giant Food Store #6255</strong></h5>
+                                <strong>Address: </strong><a href="https://maps.app.goo.gl/6nuXb6jDrXGxmPkd7">801 S 25th St, Easton, PA 18045</a><br>
+                            </div>
+                            <div class="resource-card">
+                                <h5><strong>Giant Food Store #6330</strong></h5>
+                                <strong>Address: </strong><a href="https://maps.app.goo.gl/cNJjwLLV8gPvKmet9">301 Town Center Blvd, Easton, PA 18040</a><br>
+                            </div>
+                            <div class="resource-card">
+                                <h5><strong>Redner's Warehouse Markets #78</strong></h5>
+                                <strong>Address: </strong><a href="https://maps.app.goo.gl/VQPKrETFU7Go1VyQ9">3745 Nicholas St, Easton, PA 18045</a><br>
+                            </div>
+                            <div class="resource-card">
+                                <h5><strong>ShopRite of Bethlehem</strong></h5>
+                                <strong>Address: </strong><a href="https://maps.app.goo.gl/TScJPBnA2HEVSdzE9">4701 Freemansburg Ave, Easton, PA 18045</a><br>
+                            </div>
+                            <div class="resource-card">
+                                <h5><strong>Wal-Mart #2252</strong></h5>
+                                <strong>Address: </strong><a href="https://maps.app.goo.gl/wo9ADJrEtW8QKi7y9">3722 Nazareth Rd, Easton, PA 18045</a><br>
+                            </div>
+                            <div class="resource-card">
+                                <h5><strong>Wegmans Food Markets</strong></h5>
+                                <strong>Address: </strong><a href="https://maps.app.goo.gl/eBrwQV3MGB4VYbqR6">3791 Nazareth Rd, Easton, PA 18045</a><br>
+                            </div>
+                            <div class="resource-card">
+                                <h5><strong>Weis Markets #168</strong></h5>
+                                <strong>Address: </strong><a href="https://maps.app.goo.gl/j9MH2Er7JUsN2Yyr9">3825 Sullivan Trl, Easton, PA 18040</a><br>
+                            </div>
+                            <div class="resource-card">
+                                <h5><strong>Weis Markets #169</strong></h5>
+                                <strong>Address: </strong><a href="https://maps.app.goo.gl/uMBTfMCxrZVZUxib7">3011 William Penn Hwy, Easton, PA 18045</a><br>
+                            </div>
+                            <!-- Add more grocery options as needed -->
+                        </div>
+    
+{#                        <!-- Markets -->#}
+{#                        <div class="resource-section">#}
+{#                            <div class="resource-header">Markets</div>#}
+{#                            <div class="resource-card">Market 1</div>#}
+{#                            <div class="resource-card">Market 2</div>#}
+{#                            <!-- Add more markets as needed -->#}
+{#                        </div>#}
+                
+            </div>
 
-                    <!-- Grocery with WIC -->
-                    <div class="resource-section">
-                        <div class="resource-header">Grocery with WIC</div>
-                        <div class="resource-card">Grocery Store 1</div>
-                        <div class="resource-card">Grocery Store 2</div>
-                        <!-- Add more grocery options as needed -->
-                    </div>
-
-                    <!-- Markets -->
-                    <div class="resource-section">
-                        <div class="resource-header">Markets</div>
-                        <div class="resource-card">Market 1</div>
-                        <div class="resource-card">Market 2</div>
-                        <!-- Add more markets as needed -->
-                    </div>
-                </div>
-
+            <!-- Right Section: Map -->
+            <div class="right-side">
                 <!-- Map Section -->
-                <div class="col-md-6">
-                    <div class="map-container" id="map" style="height: 400px;"></div>
-                </div>
+                    <div class="map-container" id="map" style="height: 600px;"></div>
             </div>
-
-            <!-- Partners Section -->
-            <div class="row partners">
-                <div class="col-12">
-                    <div class="partners-header">Our Partners</div>
-                    <ul>
-                        <li>Partner 1</li>
-                        <li>Partner 2</li>
-                        <li>Partner 3</li>
-                        <!-- Add more partners as needed -->
-                    </ul>
-                </div>
-            </div>
+            
         </div>
         
         {% load static %}
         <script>
             function initMap() {
                 const map = new google.maps.Map(document.getElementById("map"), {
-                    zoom: 14,
-                    center: { lat: 40.689248, lng: -75.231458 },
+                    zoom: 13,
+                    center: { lat: 40.692124932569946, lng: -75.24977371164705 },
                     streetViewControl: false
                 });
 
                 const locations = [
-                    { lat: 40.69075689817673, lng: -75.22474112883529, title: "Two Rivers Health & Wellness Foundation", phonenumber: "(484) 544-3113", address: "1101 Northampton Street, Easton, PA 18042", website: "https://www.nhclv.org/health-centers/easton/" },
-                    { lat: 40.669570773593385, lng: -75.24113879811037, title: "The Children's Home of Easton", phonenumber: "(610) 258-2831", address: "2000 S 25th St, Easton, PA 18042", website: "https://www.thechildrenshome.org/"},
-                    ];
+                    { lat: 40.68969954681312, lng: -75.21017990203079, title: "Project of Easton Food Pantry", address: "330 Ferry Street, Easton, PA 18042"},
+                    { lat: 40.686069430864464, lng: -75.2231430115925, title: "Express Mini Market", address: "1041 Butler St, Easton, PA 18042"},
+                    { lat: 40.67715150307823, lng: -75.24967433318099, title: "Giant Food Store #6255", address: "801 S 25th St, Easton, PA 18045"},
+                    { lat: 40.71463897132235, lng: -75.22251960249865, title: "Giant Food Store #6330", address: "301 Town Center Blvd, Easton, PA 18040"},
+                    { lat: 40.6780129908632, lng: -75.26922538372023, title: "Redner's Warehouse Markets #78", address: "3745 Nicholas St, Easton, PA 18045"},
+                    { lat: 40.65955002412959, lng: -75.29188538298762, title: "ShopRite of Bethlehem", address: "4701 Freemansburg Ave, Easton, PA 18045"},
+                    { lat: 40.72283347569406, lng: -75.27952646385222, title: "Wal-Mart #2252", address: "3722 Nazareth Rd, Easton, PA 18045"},
+                    { lat: 40.72051756138591, lng: -75.28227374480782, title: "Wegmans Food Markets", address: "3791 Nazareth Rd, Easton, PA 18045"},
+                    { lat: 40.753581211435076, lng: -75.23970242547841, title: "Weis Markets #168", address: "3825 Sullivan Trl, Easton, PA 18040"},
+                    { lat: 40.68384450535958, lng: -75.25961514378417, title: "Weis Markets #169", address: "3011 William Penn Hwy, Easton, PA 18045"}
+                ];
 
                 const customInfoWindow = document.createElement("div");
                 customInfoWindow.style.position = "absolute";
@@ -270,8 +303,8 @@
                 customInfoWindow.style.fontFamily = "'Bebas Neue', sans-serif";
                 customInfoWindow.style.fontSize = "1vw"; // Adjust font size for better scaling
                 customInfoWindow.style.display = "none";
-                customInfoWindow.style.padding = "10px"; // Add padding for content spacing
-                customInfoWindow.style.maxWidth = "40vw"; // Set maximum width for large content
+                customInfoWindow.style.padding = "5px"; // Add padding for content spacing
+                customInfoWindow.style.maxWidth = "30vw"; // Set maximum width for large content
                 customInfoWindow.style.whiteSpace = "normal"; // Allow text to wrap
                 customInfoWindow.style.zIndex = "1000";
                 document.getElementById("map").appendChild(customInfoWindow);
@@ -299,9 +332,8 @@
                         marker.setTitle("");
                         customInfoWindow.innerHTML = `
                     <div>
-                        <h1>${location.title}</h1>
-                        <h3>Address: ${location.address}</h3>
-                        <h3>Phone: ${location.phonenumber}</h3>
+                        <h3>${location.title}</h3>
+                        <h5>Address: ${location.address}</h5>
                     </div>
                     `;
                         customInfoWindow.style.display = "block";
@@ -328,6 +360,5 @@
         <script async defer
                 src="https://maps.googleapis.com/maps/api/js?key={{api_key}}&callback=initMap&">
         </script>
-        
-</body>
+    </body>
 </html>

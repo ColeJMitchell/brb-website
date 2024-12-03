@@ -15,6 +15,8 @@
         }
         .container-fluid {
             padding: 0;
+            background-color: #f8f9fa;
+
         }
         .image-container {
             position: relative;
@@ -26,7 +28,7 @@
             top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: yellow;
+            color: #ffe800;
             font-family: 'Bebas Neue', sans-serif;
             font-weight: bold;
             font-size: 13vw;
@@ -42,7 +44,7 @@
             top: 60%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: yellow;
+            color: #ffe800;
             font-family: 'Bebas Neue', sans-serif;
             font-weight: bold;
             font-size: 2vw; 
@@ -61,7 +63,7 @@
         }
 
         .custom-button {
-            color: yellow;
+            color: #ffe800;
             font-family: 'Bebas Neue', sans-serif;
             font-size: 2.2vw;
             outline: none;
@@ -71,7 +73,7 @@
         .custom-button:hover,
         .custom-button:focus,
         .custom-button:active {
-            color: yellow !important;
+            color: #ffe800 !important;
             background-color: transparent; 
             border-color: transparent; 
             box-shadow: none; 
@@ -97,20 +99,19 @@
         /* Additional styling for content layout */
         .content-container {
             padding: 20px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+
         }
 
-        .clinics, .map, .insurances {
-            margin-top: 20px;
-        }
-
-        .clinics-header, .insurances-header {
+        .clinics-header, .daycare-header {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 2rem;
             color: black;
         }
 
-        .clinic-card {
-            background-color: #f8f9fa;
+        .clinic-card, .daycare-links {
+            background-color: #ffffff;
             border: 1px solid #ddd;
             padding: 10px;
             border-radius: 5px;
@@ -128,15 +129,19 @@
             color: #6c757d;
         }
 
-        .insurance-links, .in-person-help {
+        .daycare-links {
             font-size: 1rem;
+        }
+         
+        .inBrown { 
+            color: rgb(152, 91, 16); 
         }
         
     </style>
 </head>
 <body>
     <div class="container-fluid">
-        <div class="row d-flex justify-content-around" style="background-color: black; height: 10vh;">
+        <div class="row d-flex justify-content-around" style="background-color: #23212c; height: 10vh;">
 
             <div class="col d-flex justify-content-center align-items-center position-relative">
                 <form method="post" action="{% url 'home' %}">
@@ -152,7 +157,7 @@
                 </form>
             </div> 
 
-            <div class="col d-flex justify-content-center align-items-center position-relative" style="background-color: green;">
+            <div class="col d-flex justify-content-center align-items-center position-relative" style="background-color: #3a3637;">
                 <btn class="custom-button">Healthcare</h1>
                 </div> 
 
@@ -164,7 +169,7 @@
                 </div>
 
             <div class="col d-flex justify-content-center align-items-center position-relative">
-                <form method="post" action="{% url 'communities' %}">
+                <form method="post" action="{% url 'communities_networks' %}">
                     {% csrf_token %}
                 <button class = "btn custom-button" type = "submit" >Communities</btn>
                 </form>
@@ -186,12 +191,12 @@
 
         </div>
        
-        <div class="row d-flex justify-content-around" style="background-color: yellow; height: 5vh;">
+        <div class="row d-flex justify-content-around" style="background-color: #ffe800; height: 7vh;">
             <div class="col-6 d-flex justify-content-center align-items-center">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn" style="background-color: black; color: white;" type="submit">Search</button>
-                </form>
+{#                <form class="d-flex" role="search">#}
+{#                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">#}
+{#                    <button class="btn" style="background-color: black; color: white;" type="submit">Search</button>#}
+{#                </form>#}
             </div>
             <div class="col-6 d-flex justify-content-center align-items-center">
                 <div class="btn-group" role="group" aria-label="Language selection" style="background-color: white;">
@@ -207,66 +212,65 @@
         <!-- Main Content Layout -->
         <div class="container content-container">
             <div class="row">
-                <!-- Clinics Section -->
-                <div class="col-md-6 clinics">
-                    <div class="clinics-header">Clinics</div>
+                <!-- Clinics & Daycare Section -->
+                <div class="col-md-6 clinics_daycares">
+                    <div class="clinics-header">Medical Services</div>
                     <div class="clinic-card">
-                        <strong>Name:</strong> Two Rivers Health & Wellness Foundation<br>
-                        <strong>Contact:</strong> (484) 544-3113<br>
-                        <strong>Address:</strong> 1101 Northampton Street, Easton, PA 18042<br>
-                        <strong>Insurances Accepted:</strong> Insurance A, Insurance B
+                        <h5><strong>Neighborhood Health Centers Of The Lehigh Valley</strong></h5>
+                        They have a lot of different resources available including 
+                        counseling, dental, and sexual health resources.<br>
+                        Funded by the U.S. Department of Health and Human Services.<br>
+                        <strong>Contact: </strong><a href="tel:+14845443113">(484) 544-3113</a> <br>
+                        <strong>Address: </strong><a href="https://maps.app.goo.gl/iGWD7aXeCriqeEDa8">1101 Northampton Street, Easton, PA 18042</a><br>
+                        <strong>Website: </strong><a href="https://www.nhclv.org/">nhclv.org</a> <br>
                     </div>
+
                     <div class="clinic-card">
-                        <strong>Name:</strong> The Children's Home of Easton<br>
-                        <strong>Contact:</strong> (610) 258-2831<br>
-                        <strong>Address:</strong> 2000 S 25th St, Easton, PA 18042<br>
-                        <strong>Insurances Accepted:</strong> Insurance A, Insurance B
+                        <h5><strong>Star Community Health/St. Luke’s Hospital</strong></h5>
+                        Partnered with <a href="https://findhelp.org">findhelp.org</a> to help families in need.<br>
+                        <strong>Contact: </strong>Pediatrics: <a href="tel:+14845038160">(484) 503-8160</a> - Women's Health: <a href="tel:+14845038175"> (484) 503-8175</a><br>
+                        <strong>Address: </strong><a href="https://maps.app.goo.gl/g6Nuig9JpE7opXxV6">220 Ferry St, Easton, PA 18042</a><br>
+                        <strong>Website: </strong><a href="https://starcommunityhealth.org/services">Star Community Health - Services</a> <br>
                     </div>
                     <!-- Add more clinic cards as needed -->
-                    <div class="clinic-card">
-                        <strong>Name:</strong> Two Rivers Health & Wellness Foundation<br>
-                        <strong>Contact:</strong> (484) 544-3113<br>
-                        <strong>Address:</strong> 1101 Northampton Street, Easton, PA 18042<br>
-                        <strong>Insurances Accepted:</strong> Insurance A, Insurance B
+                   
+                    <!-- Daycares Section -->
+                    <div class="col-12">
+                        <div class="daycare-header">Daycares</div>
+                        <div class="daycare-links">
+                            <h5><strong>Get Set Learning Center</strong></h5>
+                            Available in Easton for families that need to leave their kids during the day.<br> 
+                            Curriculum to help with social development and early learning.<br>
+                            <strong>Contact: </strong><a href="tel:+16104382974">(610) 438-2974</a><br>
+                            <strong>Address: </strong><a href="https://maps.app.goo.gl/bhjxj3baZ2fxAQyP8">930 S 25th St, Easton, PA 18042</a><br>
+                            <strong>Website: </strong><a href="https://www.getsetcenters.com/about">Equal Opportunity Program</a> <br>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Map Section -->
                 <div class="col-md-6 map">
-                    <div class="map-container" id="map" style="height: 400px;"></div>
+                    <div class="map-container" id="map" style="height: 600px;"></div>
                 </div>
-                
             </div>
 
-            <!-- Insurances Section -->
-            <div class="row insurances">
-                <div class="col-12">
-                    <div class="insurances-header">Insurances</div>
-                    <div class="insurance-links">
-                        <a href="#">www.insuranceA.com</a><br>
-                        <a href="#">www.insuranceB.com</a>
-                    </div>
-                    <div class="in-person-help mt-3">
-                        <strong>Get help in person!</strong><br>
-                        Location: 123 Main St, Easton, PA
-                    </div>
-                </div>
-            </div>
+            
         </div>
 
         {% load static %}
         <script>
             function initMap() {
                 const map = new google.maps.Map(document.getElementById("map"), {
-                    zoom: 14,
-                    center: { lat: 40.689248, lng: -75.231458 },
+                    zoom: 13,
+                    center: { lat: 40.69075689817673, lng: -75.22474112883529 },
                     streetViewControl: false
                 });
-
+                
                 const locations = [
-                    { lat: 40.69075689817673, lng: -75.22474112883529, title: "Two Rivers Health & Wellness Foundation", phonenumber: "(484) 544-3113", address: "1101 Northampton Street, Easton, PA 18042", website: "https://www.nhclv.org/health-centers/easton/" },
-                    { lat: 40.669570773593385, lng: -75.24113879811037, title: "The Children's Home of Easton", phonenumber: "(610) 258-2831", address: "2000 S 25th St, Easton, PA 18042", website: "https://www.thechildrenshome.org/"},
-                    ];
+                    { lat: 40.69075689817673, lng: -75.22474112883529, title: "Neighborhood Health Centers Of The Lehigh Valley", phonenumber: "(484) 544-3113", address: "1101 Northampton Street, Easton, PA 18042" },
+                    { lat: 40.68973193412842, lng: -75.20765921210457, title: "Star Community Health/St. Luke’s Hospital", phonenumber: "Pediatrics (KidsCare), 484-503-8160\nWomen’s Health (OB-GYN), 484-503-8175", address: "220 Ferry St, Easton, PA 18042"},
+                    { lat: 40.67667398887296, lng: -75.24615005951765, title: "Get Set Learning Center", phonenumber: "(610) 438-2974", address: "930 S 25th St, Easton, PA 18042"}
+                ];
 
                 const customInfoWindow = document.createElement("div");
                 customInfoWindow.style.position = "absolute";
@@ -275,8 +279,8 @@
                 customInfoWindow.style.fontFamily = "'Bebas Neue', sans-serif";
                 customInfoWindow.style.fontSize = "1vw"; // Adjust font size for better scaling
                 customInfoWindow.style.display = "none";
-                customInfoWindow.style.padding = "10px"; // Add padding for content spacing
-                customInfoWindow.style.maxWidth = "40vw"; // Set maximum width for large content
+                customInfoWindow.style.padding = "5px"; // Add padding for content spacing
+                customInfoWindow.style.maxWidth = "30vw"; // Set maximum width for large content
                 customInfoWindow.style.whiteSpace = "normal"; // Allow text to wrap
                 customInfoWindow.style.zIndex = "1000";
                 document.getElementById("map").appendChild(customInfoWindow);
@@ -303,9 +307,9 @@
                         marker.setTitle("");
                         customInfoWindow.innerHTML = `
                     <div>
-                        <h1>${location.title}</h1>
-                        <h3>Address: ${location.address}</h3>
-                        <h3>Phone: ${location.phonenumber}</h3>
+                        <h3>${location.title}</h3>
+                        <h5>Address: ${location.address}</h5>
+                        <h5>Phone: ${location.phonenumber}</h5>
                     </div>
                     `;
                         customInfoWindow.style.display = "block";
@@ -332,6 +336,5 @@
         <script async defer
                 src="https://maps.googleapis.com/maps/api/js?key={{api_key}}&callback=initMap&">
         </script>
-        
 </body>
 </html>
