@@ -18,6 +18,10 @@
             padding: 0;
             overflow: auto;
         }
+        #content {
+            flex: 1; /* Fills the available space */
+            padding: 20px; /* Adding padding to the content area */
+        }
         .container-fluid {
             padding: 0;
         }
@@ -63,7 +67,6 @@
             margin: 0;
             padding: 0;
         }
-
         .custom-button {
             color: #ffe800;
             font-family: 'Bebas Neue', sans-serif;
@@ -71,7 +74,6 @@
             outline: none;
             border: none;
         }
-
         .custom-button:hover,
         .custom-button:focus,
         .custom-button:active {
@@ -80,7 +82,6 @@
             border-color: transparent; 
             box-shadow: none; 
         }
-        
         .material-symbols-outlined {
             font-variation-settings:
             'FILL' 0,
@@ -88,7 +89,6 @@
             'GRAD' 0,
             'opsz' 24
         }
-
         .button{
             display:inline-flex;
             align-items: center;
@@ -96,18 +96,14 @@
             outline:none;
             border-radius: 100px;
         }
-
         .button2 {
             margin-right: 10px; /* Adds 10px space to the right of the button */
         }
-
         #square{
             width: 250 px;
             height: 250 px;
             background-color: seagreen;
         }
-
-
         @media (max-width: 768px) {
             .overlay-head {
                 font-size: 15vw;
@@ -116,7 +112,6 @@
                 font-size: 4vw;
             }
         }
-
         @media (max-width: 480px) {
             .overlay-head {
                 font-size: 20vw;
@@ -126,209 +121,136 @@
             }
         }
 
-         /* Additional styling for content layout */
-         .content-container, .filter-container {
+        /* Additional styling for content layout */
+        .content-container, .filter-container {
             padding: 20px;
         }
-
         .communities-header{
             font-family: 'Bebas Neue', sans-serif;
             font-size: 2rem;
             color: black;
         }
-
         .forums-card {
             background-color: #f8f9fa;
             border: 1px solid #ddd;
             padding: 10px;
             border-radius: 5px;
             margin-bottom: 10px;
+            font-size: 1.5rem;
         }
         .forums-links {
             font-size: 1rem;
         }
 
-        .image-container {
-            position: relative;   /* anything other than the default static */
-            height: 160px;        /* make the parent dictate the height */
+       /* images on the page*/
+       #image-container {
+            display: flex; /* Use flexbox to arrange images in a row */
+            flex-direction: column; 
+            justify-content: space-between; /* Space images evenly */
+            max-width: 800px; /* Max width for the container */
+            margin: 0 auto; /* Center the container */
         }
-
-        .image-container img {
-            position: absolute;
-            top: 0;
+        #image-container img {
+            width: 100%; /* Allow images to scale to container width */
+            max-width: 200px; /* Set a maximum width for each image */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 0px; /* Optional: rounded corners */
+            padding: 10px;
+        }
+        /*creates footer area */
+        footer{
+            background-color: #fcd615; /* main background color*/
+            padding: 20px;
+            position: relative; 
+        }
+        .footerContainer{ 
+            position:fixed;bottom:0;
             width: 100%;
-            height: 100%;
-            object-fit: cover;  /* or use: contain; to make the entire image visible */
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            pointer-events: none;  /* Prevent mouse actions */
+            padding: 70px 30px 20px ;
+            display:block
         }
-
-        .image-container img.is-active {
+        .inBlack {
+            border: 2px #23212c; /* Set the border width and color */
+            padding: 15px; /* Add padding inside the border */
+            margin: 10px 0; /* Add spacing around the box */
+            background-color: #d8bf74; /* Optional: Set a light background for contrast */
+            border-radius: 5px; /* Optional: Rounded corners */
+            color: #413319; /*font color*/
+        }
+        .button {
+            display: flex;
+        }
+        .dropdown * {
+            box-sizing: border-box;
+        }
+        .select{
+            background: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .select
+        .footerNav{
+            margin: 30px 0;
+        }
+        .footerNav ul{
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+        }
+        .footerNav ul li a{
+            color:black;
+            margin: 20px;
+            text-decoration: none;
+            font-size: 1.3em;
+            opacity: 0.7;
+            transition: 0.5s;
+        }
+        .footerNav ul li a:hover{
             opacity: 1;
-            pointer-events: auto;  /* Allow mouse actions */
         }
-        /*gets rid of blocks*/
-        #google_translate_element a {
-            display: none;
+        .footerBottom{
+            background-color: #ffe800; /*copy right banner */ 
+            padding: 20px;
+            text-align: center;
         }
-        /* Ensure iframe styles are included to avoid default sizing */
-        #google_translate_element {
-            color: transparent;
-            width: 50 !important; /* or specify a fixed width */
-            max-width: 50px; /* Set a max-width to control size */
+        .footerBottom p{
+            color: rgb(152, 91, 16); /*copy right lettering */ 
         }
-        /* Style to control the drop-down select height and font size */
-        .goog-te-gadget-simple select {
-            height: 30px !important; /* Adjust height */
-            font-size: 10px !important; /* Control font size */
+        .designer{
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+            margin: 0px 5px;
         }
-
-        * Reduce padding for the select element */
-        .goog-te-menu2 {
-            padding: 0px !important; /* Adjust padding */
+        .column {
+            float: left;
+            width: 50%;
         }
-        /* Further adjust individual menu items */
-        .goog-te-menu2-item {
-            padding: 0px !important; /* Control padding of item */
+        
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
         }
-
-        *{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-footer{
-    background-color: #fcd615; /* main background color*/
-}
-/*creates footer area */
-.footerContainer{ 
-    position:fixed;bottom:0;
-    width: 100%;
-    padding: 70px 30px 20px ;
-    display:block
-}
-.button {
-    display: flex;
-  }
-.dropdown * {
-    box-sizing: border-box;
-}
-.select{
-    background: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.select
-/*centers icons */
-.socialIcons{
-    display: flex;
-    justify-content: center;
-}
-/*gives background to icons*/
-.socialIcons a{
-    text-decoration: none;
-    padding:  10px;
-    background-color: #ffe800;
-    margin: 10px;
-    border-radius: 50%;
-}
-.socialIcons a i{
-    font-size: 2em;
-    color: orange;
-    opacity: 0,9;
-}
-/* Hover affect on social media icon */
-.socialIcons a:hover{
-    background-color: rgb(229,172,63);
-    transition: 0.5s;
-}
-.socialIcons a:hover i{
-    color: orange;
-    transition: 0.5s;
-}
-.footerNav{
-    margin: 30px 0;
-}
-.footerNav ul{
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-}
-.footerNav ul li a{
-    color:black;
-    margin: 20px;
-    text-decoration: none;
-    font-size: 1.3em;
-    opacity: 0.7;
-    transition: 0.5s;
-}
-.footerNav ul li a:hover{
-    opacity: 1;
-}
-.footerBottom{
-    background-color: #ffe800; /*copy right banner */ 
-    padding: 20px;
-    text-align: center;
-}
-.footerBottom p{
-    color: rgb(152, 91, 16); /*copy right lettering */ 
-}
-.designer{
-    opacity: 0.7;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 400;
-    margin: 0px 5px;
-}
-.column {
-    float: left;
-    width: 50%;
-  }
-  
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-  .center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-  }
-
-  #image-container img {
-    position: absolute;
-    transition: opacity 1s ease-in-out;
-  }
-  
-  #image-container img:not(:first-child) {
-    opacity: 0;
-    display: none;
-  }
-
-  
-  
- 
-@media (max-width: 700px){
-    .footerNav ul{
-        flex-direction: column;
-    } 
-    .footerNav ul li{
-        width:100%;
-        text-align: center;
-        margin: 10px;
-    }
-    .socialIcons a{
-        padding: 8px;
-        margin: 4px;
-    }
-}
-
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+        @media (max-width: 700px){
+            .footerNav ul{
+                flex-direction: column;
+            } 
+            .footerNav ul li{
+                width:100%;
+                text-align: center;
+                margin: 10px;
+            }
+        }
        
     </style>
 </head>
@@ -380,73 +302,10 @@ footer{
 
         </div>
          <!-- yellow bar -->
-         <div class="row d-flex justify-content-around" style="background-color: #ffe800; height: 5vh;">
-            <div class="col-6 d-flex justify-content-center align-items-center">
-                 <!-- search bar -->
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn" style="background-color: black; color: white;" type="submit">Search</button>
-                </form>
-            </div>
+         <div class="row d-flex justify-content-around" style="background-color: #ffe800; height: 7vh;">
             <div class="col-6 d-flex justify-content-center align-items-center">
                  <!-- language button -->
-                <div class="btn-group"  aria-label="Language selection" style="background-color: #ffe800; height:30px;">
-                    <div id="google_translate_element" width = 30px height = 30px></div> <!-- Translation tool will be inserted here -->
-                    <script type="text/javascript">
-                        function googleTranslateElementInit() {
-                            new google.translate.TranslateElement({
-                                pageLanguage: 'en', 
-                                includedLanguages: 'es,en',
-                                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                                autoDisplay: false
-                            }, 'google_translate_element');
-                        }
-                     // Load the Google Translate API
-                        (function() {
-                            var gt = document.createElement('script'); 
-                            gt.type = 'text/javascript'; 
-                            gt.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"; 
-                            document.body.appendChild(gt);
-                        })();
-                    // Function to execute translation
-                    document.getElementById('translateButton').onclick = function() {
-                        var frame = document.querySelector('iframe'); 
-                        if (frame) {
-                            frame.contentWindow.document.querySelector('select').value = 'es'; // Set language to Spanish
-                            frame.contentWindow.document.querySelector('select').dispatchEvent(new Event('change')); // Trigger the change event
-                            }
-                    };
-                    
-
-                    document.addEventListener('DOMContentLoaded', function() {
-                    // JavaScript executed after the DOM is fully loaded
-                        var translateSelect = document.querySelector('#google_translate_element select');
-                        if (translateSelect) {
-                            translateSelect.style.height = '30px'; // Adjust height
-                            translateSelect.style.fontSize = '10px'; // Control font size
-                            }
-                    });
-
-                    if (!frame) {
-                        console.error("Translation frame not found.");
-                        alert("Translation is not available at the moment.");
-                    }
-                    $(document).ready(function() {
-                        $('#google_translate_element select').css({
-                            'height': '30px',
-                            'font-size': '10px',
-                            'max-width': '50px'
-                        });
-                    });
-                    </script>
-                    <br>
-                    <br>
-                    <p>Click G to translate!</p>
-                    
-                <br>
-                <br>
-                <br>
-                </div>
+                <div class="btn-group"  aria-label="Language selection" style="background-color: #ffe800; height:30px;"></div>
             </div>
         </div> 
         <div class = "container comms-containter">
@@ -457,14 +316,16 @@ footer{
                 <!-- hyperlink buttons-->
                 <div class='myDiv'style = "display: flex; flex-direction: row; align-items: center; justify-content: center;">
                     <h3>Select one of the following categories:    </h3>
+                </div>
+                <div class='myDiv'style = "display: flex; flex-direction: row; align-items: center; justify-content: center;">
                     <a href="http://127.0.0.1:3002/communities_networks#">
-                        <button style='margin-right:32px; padding: 15px 30px; font-size: 16px;'>Networks</button>
+                        <button style='margin-right:32px; padding: 15px 30px; font-size: 20px;'>Networks</button>
                     </a>
                     <a href="http://127.0.0.1:3002/communities_churches">
-                        <button style='margin-right:32px; padding: 15px 30px; font-size: 16px;'>Churches</button>
+                        <button style='margin-right:32px; padding: 15px 30px; font-size: 20px;'>Churches</button>
                     </a>
                     <a href="http://127.0.0.1:3002/communities_forums">
-                        <button style='margin-right:32px; padding: 15px 30px; font-size: 16px;'>Forums</button>
+                        <button style='margin-right:32px; padding: 15px 30px; font-size: 20px;'>Forums</button>
                     </a>
                 </div>
             </div>
@@ -482,22 +343,22 @@ footer{
                     <div class="forums-card">
                         <strong>Name:</strong> <a href="https://www.facebook.com/groups/1575054762779858" target =_blank>Wild N'Free Lehigh</a><br>
                         <p>From the Wild + Free website: Ralph Waldo Emerson wrote, “All good things are wild and free.” This quote is the inspiration for the Wild & Free community because it depicts an emerging group of mothers and homeschoolers who want their children to not only receive a quality education, but also to experience the adventure, freedom, and wonder of childhood.</p>
-                        <strong>Contact:</strong> <a href="mailto:lvcops-n-kids@att.net" target =_blank title = "This will send an email to Beverly Bradley">Beverly Bradley</a><br>
-                        <strong>Groups:</strong> Lehigh Valley Homeschooling Moms<br>
+                        <strong>Rules:</strong> The purpose of this group is not to be a "general" homeschool group, but rather to be a small community of friends who gather and communicate on a regular basis. Please make it a priority to join gatherings and events when you can. There will never be "mandatory attendance" but this is not a group to just keep your socializing options open. Dialogue, chat, ask questions, share fun events in the area! All of these are so welcome and necessary to creating friendships.<br>
+                        <br><strong>Groups:</strong> Lehigh Valley Homeschooling Moms<br>
                     </div>
                     <div class="forums-card">
                         <strong>Name:</strong> <a href="https://www.facebook.com/groups/2558100741111284/" target =_blank title =  >Little Village, Bethlehem</a><br>
                         <p>We provide daytime support for any primary carer who is parenting a child or children between the ages of 0 and 6 years old. This can include homemaking or part-time working moms or dads, grandparents, working parents with non-traditional schedules, or any parent who simply prefers a different moniker. Nannies are also welcome to join!</p>
-                        <strong>Groups:</strong> New Mothers, Children Under 6, Nannies<br>
+                        <strong>Rules: </strong> Members are expected and encouraged to add their own play dates and meetups to the calendar. In order to foster a sense of community and accountability to each other, we ask that all members commit to attending at least one event per month. Inactive members will routinely be removed, but are more than welcome to rejoin Little Village if availability/interest changes in the future. <br>
+                        <br><strong>Groups:</strong> New Mothers, Children Under 6, Nannies<br>
                     </div>
                    
                 </div>
                 <!-- filter half-->
-                <div class = "col-md-3 filter align-items-center position-relative">
+                <div class = "col-md-4 filter align-items-center position-relative">
                     <div id="image-container">
                         <img src="facebookLogo.png" style="max-width: 100%; max-height: 100%;" alt="Facebook Logo">
                     </div>
-                      <script src="script.js"></script>
                     <div class="filter-container" id="filter" style="height: 200px;">
                         <!--<label for="groups">Choose an identity:</label>
                         <select name="groups" id="groups">
