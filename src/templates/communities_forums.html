@@ -366,7 +366,8 @@
                 <!-- filter half-->
                 <div class = "col-md-4 filter align-items-center position-relative">
                     <div id="image-container">
-                        <img src="facebookLogo.png" style="max-width: 100%; max-height: 100%;" alt="Facebook Logo">
+                        {%load static%}
+                        <img src="{% static facebookLogo.png%}" style="max-width: 100%; max-height: 100%;" alt="Facebook Logo">
                     </div>
                     <div class="filter-container" id="filter" style="height: 200px;">
                         <!--<label for="groups">Choose an identity:</label>
