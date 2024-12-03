@@ -261,24 +261,28 @@
          <div class="row d-flex justify-content-around" style="background-color: #23212c; height: 10vh;">
             <div class="col d-flex justify-content-center align-items-center position-relative">
                 <form method="post" action="{% url 'home' %}"> <!-- link to homepage-->
+                    {% csrf_token %}
                 <button class = "btn custom-button" type = "submit">Home</btn>
                 </form>
             </div> 
 
             <div class="col d-flex justify-content-center align-items-center position-relative">
                 <form method="post" action="{% url 'schools' %}"> <!-- link to schools page -->
+                    {% csrf_token %}
                 <button class = "btn custom-button " type = "submit">Schools</btn>
                 </form>
             </div> 
 
             <div class="col d-flex justify-content-center align-items-center position-relative">
                 <form method="post" action="{% url 'healthcare' %}"><!-- link to healthcare-->
+                    {% csrf_token %}
                 <button class = "btn custom-button" type = "submit">Healthcare</btn>
                 </form>
             </div>  
 
             <div class="col d-flex justify-content-center align-items-center position-relative">
                 <form method="post" action="{% url 'food' %}"><!-- link to food page-->
+                    {% csrf_token %}
                 <button class = "btn custom-button" type = "submit">Food</btn>
                 </form>
             </div> 
@@ -290,12 +294,14 @@
 
             <div class="col d-flex justify-content-center align-items-center position-relative">
                 <form method="post" action="{% url 'events' %}"><!-- link to events page-->
+                    {% csrf_token %}
                 <button class = "btn custom-button" type = "submit" >Events</btn>
                 </form>
             </div>
 
             <div class="col d-flex justify-content-center align-items-center position-relative">
                 <form method="post" action="{% url 'aboutus' %}"><!-- link to about us page -->
+                    {% csrf_token %}
                 <button class = "btn custom-button" type = "submit">About Us</btn>
                 </form>
             </div>
