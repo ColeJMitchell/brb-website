@@ -367,7 +367,7 @@
                 <div class = "col-md-4 filter align-items-center position-relative">
                     <div id="image-container">
                         {%load static%}
-                        <img src="{% static facebookLogo.png%}" style="max-width: 100%; max-height: 100%;" alt="Facebook Logo">
+                        <img src="{% static 'facebookLogo.png'%}" style="max-width: 100%; max-height: 100%;" alt="Facebook Logo">
                     </div>
                     <div class="filter-container" id="filter" style="height: 200px;">
                         <!--<label for="groups">Choose an identity:</label>
@@ -414,7 +414,8 @@
     <div class="footer">
         <div class="row">
             <div class="column"> <!--logo-->
-                <img src = "Bee Ready Logo.png" alt = "Bee Ready Logo" width="600" class="center"></image>
+                {%load static%}
+                <img src = "{%static 'Bee Ready Logo.png' %}" alt = "Bee Ready Logo" width="600" class="center"></image>
             </div>
             <div class="column"> <!--about us summary-->
                 <div class = "inBlack">
