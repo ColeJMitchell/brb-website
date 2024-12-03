@@ -17,7 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from pages.views import home
-from pages.views import communities
+from pages.views import communities_networks
+from pages.views import communities_churches
+from pages.views import communities_forums
 from pages.views import aboutus
 from pages.views import food
 from pages.views import healthcare
@@ -29,7 +31,9 @@ from pages.views import spanish_schools
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('communities/', communities, name='communities'),
+    path('communities/networks', communities_networks, name='communities_networks'),
+    path('communities/churches', communities_churches, name='communities_churches'),
+    path('communities/forums', communities_forums, name='communities_forums'),
     path('aboutus/', aboutus, name='aboutus'),
     path('food/', food, name='food'),
     path('healthcare/', healthcare, name='healthcare'),
