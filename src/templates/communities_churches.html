@@ -342,7 +342,7 @@
                         <strong>Name:</strong> <a href="https://www.firstmoravianeaston.org/" target =_blank >First Moravian Church</a><br>
                         <p>We are called into a Christian fellowship by Jesus Christ. As members of Christ's body, the Church, we are expected to serve our sisters and brothers by proclaiming and witnessing to our faith by word and action.
                             Every member of this congregation shares in the inheritance, the discipleship, and the ministry of Jesus Christ both inside the Church and outside in the community and world. We understand this to include an opportunity to use the talents we have to participate in the life of this Church, and in the witness and mission to the world.</p>
-                        <strong>Contact:</strong> <a href="pastor@firstmoravianeaston.org" target =_blank title = "This will send an email to Pastor Sue Koenig">Pastor Sue Koenig</a><br>
+                        <strong>Contact:</strong> <a href="mailto:pastor@firstmoravianeaston.org" target =_blank title = "This will send an email to Pastor Sue Koenig">Pastor Sue Koenig</a><br>
                         <strong>Address:</strong> 225 N 10th St. Easton, PA 18042<br>
                         <strong>Groups:</strong> For all ages<br>
                         <strong>Programs:</strong> First Sunday Sunday School and Robotics for Kids</a><br>
@@ -375,9 +375,10 @@
                 <div class = "col-md-4 filter align-items-center position-relative">
                     <div class="filter-container" id="filter" style="height: 400px;">
                         <div id="image-container">
-                            <img src="FMC.png" style="max-width: 100%; max-height: 100%;" alt="Image 1">
-                            <img src="OLOM.png" style="max-width: 100%; max-height: 100%;" alt="Man Holding Baby">
-                            <!--<img src="GSC.png" style="max-width: 100%; max-height: 100%;" alt="Reading Room">-->
+                            {% load static %}
+                            <img src="{% static 'FMC.png' %}" style="max-width: 100%; max-height: 100%;" alt="Kids Drawing on Table">
+                            <img src="{% static 'OLOM.png' %}" style="max-width: 100%; max-height: 100%;" alt="Altar Inside Church">
+                            <img src="{% static 'GSC.png' %}" style="max-width: 100%; max-height: 100%;" alt="Church Sermon">
                         </div>
                     </div>
                 </div>
@@ -390,7 +391,8 @@
     <div class="footer">
         <div class="row">
             <div class="column"> <!--logo-->
-                <img src = "Bee Ready Logo.png" alt = "Bee Ready Logo" width="600" class="center"></image>
+                {%load static%}
+                <img src = "{%static 'Bee Ready Logo.png'%}" alt = "Bee Ready Logo" width="600" class="center"></image>
             </div>
             <div class="column"> <!--about us summary-->
                 <div class = "inBlack">
