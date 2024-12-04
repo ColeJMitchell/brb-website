@@ -116,6 +116,105 @@
             font-size: 1.5rem;
             color: #6c757d;
         }
+        
+        /*creates footer area */
+        footer{
+            background-color: #fcd615; /* main background color*/
+            padding: 20px;
+            position: relative;
+        }
+        .footerContainer{
+            position:fixed;bottom:0;
+            width: 100%;
+            padding: 70px 30px 20px ;
+            display:block
+        }
+        .inBlack {
+            border: 2px #23212c; /* Set the border width and color */
+            padding: 15px; /* Add padding inside the border */
+            margin: 10px 0; /* Add spacing around the box */
+            background-color: #d8bf74; /* Optional: Set a light background for contrast */
+            border-radius: 5px; /* Optional: Rounded corners */
+            color: #413319; /*font color*/
+            font-size: 1.25rem;
+        }
+        .button {
+            display: flex;
+        }
+        .dropdown * {
+            box-sizing: border-box;
+        }
+        .select{
+            background: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .select
+
+        .footerNav{
+            margin: 30px 0;
+        }
+        .footerNav ul{
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+        }
+        .footerNav ul li a{
+            color:black;
+            margin: 20px;
+            text-decoration: none;
+            font-size: 1.3em;
+            opacity: 0.7;
+            transition: 0.5s;
+        }
+        .footerNav ul li a:hover{
+            opacity: 1;
+        }
+        .footerBottom{
+            background-color: #ffe800; /*copy right banner */
+            padding: 20px;
+            text-align: center;
+        }
+        .footerBottom p{
+            color: rgb(152, 91, 16); /*copy right lettering */
+        }
+        .designer{
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+            margin: 0px 5px;
+        }
+        .column {
+            float: left;
+            width: 50%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+        /*footer*/
+        @media (max-width: 700px){
+            .footerNav ul{
+                flex-direction: column;
+            }
+            .footerNav ul li{
+                width:100%;
+                text-align: center;
+                margin: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -360,5 +459,42 @@
         <script async defer
                 src="https://maps.googleapis.com/maps/api/js?key={{api_key}}&callback=initMap&">
         </script>
-    </body>
+</body>
+<footer>
+    <div class="footer">
+        <div class="row">
+            <div class="column"> <!--logo-->
+                {% load static %}
+                <img src = "{% static Bee Ready Logo.png%}" alt = "Bee Ready Logo" width="600" class="center"></image>
+            </div>
+            <div class="column"> <!--about us summary-->
+                <div class = "inBlack">
+                    <br>
+                    <h1>About Us:</h1>
+                    <p> We are committed to bringing free family-child learning support to economically disadvantaged families who have little or no access to early learning opportunities. Our approach is learner-
+                        centered, teacher-guided and community supported. Working in partnership with families, we
+                        can build confidence in the family’s role as first teacher by providing support and education on
+                        the fundamentals of how children learn and child development. Our developmentally
+                        appropriate approach for children will enlist creativity, conversation, and play. Materials for
+                        continued home exploration and learning will be provided. We will support the need for early
+                        intervention and other social services.</p>
+                </div>
+            </div>
+            <div class="column"> <!--links-->
+                <div class = "footerNav">
+                    <ul>
+                        <li><a href="">Contact Us:</a></li>
+                        <li><a href="mailto:beeready4kindergarten@gmail.com"title = "This will send an email to Bee Ready Organization">Email</a></li>
+                        <li><a href="">Phone Number</a></li>
+                        <li><a href="">Address</a></li>
+                        <li><a href="https://eastonsd.org/m/events/show_event.jsp?REC_ID=2208376&id=0">Meetings</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="footerBottom">
+    <p>Copyright &copy;2024; Designed by <span class="designer">Bee Ready Blue</span></p>
+</div>
 </html>
