@@ -308,10 +308,18 @@
 
         </div>
          <!-- yellow bar -->
-         <div class="row d-flex justify-content-around" style="background-color: #ffe800; height: 7vh;">
+         <div class="row d-flex justify-content-around" style="background-color: #ffe800; height: 5vh;">
             <div class="col-6 d-flex justify-content-center align-items-center">
-                 <!-- language button -->
-                <div class="btn-group"  aria-label="Language selection" style="background-color: #ffe800; height:30px;"></div>
+                <!-- language button -->
+                <div class="col-10 d-flex justify-content-end align-items-center">
+                    <div class="btn-group" role="group" aria-label="Language selection" style="background-color: white;">
+                        <input type="radio" class="btn-check" name="language" id="english" autocomplete="off" checked>
+                        <label class="btn select-button" for="english">English</label>
+
+                        <input type="radio" class="btn-check" name="language" id="spanish" autocomplete="off">
+                        <label class="btn select-button" for="spanish">Spanish</label>
+                    </div>
+                </div>
             </div>
         </div> 
         <div class = "container comms-containter">
